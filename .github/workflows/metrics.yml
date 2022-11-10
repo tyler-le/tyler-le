@@ -27,12 +27,20 @@ jobs:
           # Options
           user: tyler-le
           template: classic
-          base: header, activity, community, repositories, metadata
+          base: header
           config_timezone: America/Los_Angeles
-          plugin_isocalendar: yes
-          plugin_isocalendar_duration: half-year
+          plugin_languages: yes
+          plugin_languages_analysis_timeout: 15
+          plugin_languages_categories: markup, programming
+          plugin_languages_colors: github
+          plugin_languages_limit: 8
+          plugin_languages_recent_categories: markup, programming
+          plugin_languages_recent_days: 14
+          plugin_languages_recent_load: 300
+          plugin_languages_sections: most-used
+          plugin_languages_threshold: 0%
           plugin_leetcode: yes
           plugin_leetcode_limit_recent: 2
           plugin_leetcode_limit_skills: 10
-          plugin_leetcode_sections: solved, skills, recent
+          plugin_leetcode_sections: solved, skills
           plugin_leetcode_user: tylerle
