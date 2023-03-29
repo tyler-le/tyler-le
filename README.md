@@ -1,5 +1,5 @@
 # 💫 About Me:
-🔭  I'm currently interning at Amazon as a Software Engineer Intern<br>🕚  I have previously interned at General Atomics and Cardea Bio.<br>📚  I am currently learning SQL and TypeScript.<br>🤝  Feel free to contact me: le.tyler.h@gmail.com
+👔 I'm currently interning at Amazon as a Software Engineer Intern<br>🕚  I have previously interned at General Atomics and Cardea Bio.<br>📚  I am currently learning SQL and TypeScript.<br>🤝  Feel free to contact me: le.tyler.h@gmail.com
 
 
 ## 🌐 Socials:
