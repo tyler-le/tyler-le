@@ -1,5 +1,4 @@
 <h2 align="center">👋 Hi! My name is Tyler and I'm an SDE Intern at Amazon</h2>
-[![](https://visitcount.itsvg.in/api?id=tyler-le&icon=0&color=0)](https://visitcount.itsvg.in)
 
 
 ###
