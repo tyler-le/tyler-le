@@ -1,4 +1,4 @@
-<h2 align="center">👋 My name is Tyler and I'm a SDE Intern at Amazon</h2>
+<h2 align="center">👋 My name is Tyler and I'm an SDE Intern at Amazon</h2>
 
 ###
 
