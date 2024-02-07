@@ -1,55 +1,55 @@
-<h2 align="center">👋 Hi! My name is Tyler and I'm an SDE Intern at Amazon</h2>
-
-
-###
-
-
-<div align="center">
-  <div style="display: flex;">
-    <img src="https://github-readme-stats.vercel.app/api?username=tyler-le&theme=radical&hide_border=true&include_all_commits=true&count_private=true" style="width: 49%; height: 250px"/>
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=tyler-le&theme=radical&hide_border=true" style="width: 49%; height: 250px;"/>
-  </div>
-</div>
-
+<h1 align="left">Hi 👋 I'm Tyler</h1>
 
 ###
 
-<div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" width="42" alt="javascript logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" height="40" alt="amazonwebservices logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="30" width="42" alt="html5 logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" height="30" width="42" alt="css3 logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="30" width="42" alt="python logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="30" width="42" alt="cplusplus logo"  />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="30" width="42" alt="java logo"  />
-  <div align="center">
-</div>
+<h2 align="left">About me</h2>
 
 ###
 
-<div align="center">
-  <a href="mailto:le.tyler.h@gmail.com" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=Gmail&logo=gmail&label=&color=D14836&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="gmail logo"  />
-  </a>
+<p align="left">🎓 Computer Science Graduate from UC San Diego<br>💻  Software Engineer Intern at Amazon<br>📖 Advanced Data Structures Tutor at UC San Diego</p>
+
+###
+
+<h2 align="left">I code with</h2>
+
+###
+
+<div align="left">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="40" alt="java logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40" alt="python logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" height="40" alt="cplusplus logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" height="40" alt="spring logo"  />
+  <img width="12" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" height="40" alt="aws logo"  />
+  <img width="12" />
+          
+
+###
+
+<h2 align="left">Connect with me</h2>
+
+###
+
+<div align="left">
   <a href="https://www.linkedin.com/in/le-tyler/" target="_blank">
-    <img src="https://img.shields.io/static/v1?message=LinkedIn&logo=linkedin&label=&color=0077B5&logoColor=white&labelColor=&style=for-the-badge" height="35" alt="linkedin logo"  />
+    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/linkedin/default.svg" width="52" height="40" alt="linkedin logo"  />
+  </a>
+  <a href="mailto:le.tyler.h@gmail.com" target="_blank">
+    <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/gmail/default.svg" width="52" height="40" alt="gmail logo"  />
   </a>
 </div>
 
 ###
 
-<br clear="both">
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/tyler-le/tyler-le/output/snake.svg" alt="Snake animation" />
-  </div>
+<h2 align="left"></h2>
 
 ###
 
-<div align="center">
+<div align="left">
   <a href="https://open.spotify.com/user/12146690542" target="_blank">
     <img src="https://spotify-recently-played-readme.vercel.app/api?user=12146690542&count=3" alt="Spotify recently played"  />
   </a>
 </div>
-
-###
