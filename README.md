@@ -6,7 +6,7 @@
 
 ###
 
-<p align="left">🎓 Computer Science Graduate from UC San Diego<br>💻  Software Engineer Intern at Amazon<br>📖 Advanced Data Structures Tutor at UC San Diego</p>
+<p align="left">🎓 Computer Science Graduate from UC San Diego<br>💻  Software Engineer at Amazon<br>📖 Advanced Data Structures Tutor at UC San Diego</p>
 
 ###
 
