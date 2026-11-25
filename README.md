@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tyler-le/tyler-le/master/dark_mode.svg?v=48e7f6d04216">
-  <img alt="Tyler Le | Software Engineer | Terminal-style profile" src="https://raw.githubusercontent.com/tyler-le/tyler-le/master/light_mode.svg?v=a65a42ec48c6">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/tyler-le/tyler-le/master/dark_mode.svg?v=ea802d28a1a2">
+  <img alt="Tyler Le | Software Engineer | Terminal-style profile" src="https://raw.githubusercontent.com/tyler-le/tyler-le/master/light_mode.svg?v=ff69cf37ccaf">
 </picture>
 
 
