@@ -77,13 +77,13 @@
 <text x="415" y="420" fill="#24292f">- GitHub Stats</text>
 <path d="M 551 415 H 965" stroke="#6e7781"/>
 <text x="415" y="444" fill="#6e7781">. </text>
-<text x="433" y="444" fill="#953800">Contribs (1 yr):</text>
-<text x="586" y="444" fill="#6e7781">...</text>
-<text x="620" y="444" fill="#0550ae">3,146</text>
+<text x="433" y="444" fill="#953800">Contributions:</text>
+<text x="568" y="444" fill="#6e7781">.....</text>
+<text x="620" y="444" fill="#0550ae">9,462</text>
 <text x="415" y="468" fill="#6e7781">. </text>
-<text x="433" y="468" fill="#953800">Private (1 yr):</text>
-<text x="577" y="468" fill="#6e7781">....</text>
-<text x="620" y="468" fill="#0550ae">822</text>
+<text x="433" y="468" fill="#953800">Repos contributed:</text>
+<text x="604" y="468" fill="#6e7781">.</text>
+<text x="620" y="468" fill="#0550ae">7</text>
 <text x="415" y="492" fill="#6e7781">. </text>
 <text x="433" y="492" fill="#953800">Public code diff:</text>
 <text x="595" y="492" fill="#6e7781">..</text>
