@@ -1,0 +1,70 @@
+import json, os, urllib.request, io
+from pathlib import Path
+from datetime import date
+from html import escape
+from PIL import Image, ImageOps
+
+USER = "tyler-le"
+TOKEN = os.environ.get("GH_TOKEN", "")
+def get(url, auth=False):
+    headers = {"User-Agent": "profile-readme-generator"}
+    if auth and TOKEN:
+        headers["Authorization"] = "Bearer " + TOKEN
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
+        return r.read()
+profile = json.loads(get("https://api.github.com/users/" + USER, True))
+avatar = Image.open(io.BytesIO(get(profile["avatar_url"]))).convert("L")
+avatar = ImageOps.autocontrast(ImageOps.fit(avatar, (42, 27)), cutoff=1)
+ramp = " .:-=+*#%@"
+portrait = ["".join(ramp[p * (len(ramp)-1)//255] for p in list(avatar.crop((0,y,42,y+1)).getdata())) for y in range(27)]
+repos = []
+for page in range(1, 101):
+    batch = json.loads(get(f"https://api.github.com/users/{USER}/repos?per_page=100&page={page}", True))
+    repos.extend(batch)
+    if len(batch) < 100: break
+stars = sum(r["stargazers_count"] for r in repos)
+joined = date.today() >= date(2026,12,14)
+rows = [
+("Host", "Google" if joined else "Coursera"),
+("Kernel", "Software Engineer"),
+("Next" if not joined else "Previously", "Google (incoming)" if not joined else "Coursera, Amazon Ads"),
+("Previous" if not joined else "Location", "Amazon Ads" if not joined else "California, USA"),
+("Education", "UC San Diego | B.S. Computer Science"),
+("",""),
+("Languages", "Java, Python, C++, JavaScript, SQL"),
+("Backend", "Distributed systems, APIs, GraphQL"),
+("Infrastructure", "AWS, Redis, DynamoDB, PostgreSQL"),
+("Frontend", "React, Next.js"),
+("Interests", "Low-latency systems, data pipelines"),
+("",""),
+("- Contact",""),
+("LinkedIn","linkedin.com/in/le-tyler"),
+("GitHub","github.com/tyler-le"),
+("",""),
+("- GitHub Stats",""),
+("Repositories",str(profile["public_repos"])),
+("Stars",str(stars)),
+("Followers",str(profile["followers"])),
+]
+for theme, bg, fg, key, val, dim in [
+    ("dark","#161b22","#c9d1d9","#ffa657","#a5d6ff","#616e7f"),
+    ("light","#f6f8fa","#24292f","#953800","#0550ae","#6e7781")]:
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="990" height="570" viewBox="0 0 990 570"><rect width="990" height="570" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
+    def line(x,y,s,c):
+        out.append(f'<text x="{x}" y="{y}" fill="{c}">{escape(s)}</text>')
+    for i,s in enumerate(portrait):
+        line(15, 31+i*19, s, fg)
+    line(415,31,"tyler@le",fg)
+    out.append(f'<path d="M 500 26 H 965" stroke="{dim}"/>')
+    for i,(k,v) in enumerate(rows):
+        y=60+i*24
+        if k.startswith("-"):
+            line(415,y,k,fg)
+            out.append(f'<path d="M {425+len(k)*9} {y-5} H 965" stroke="{dim}"/>')
+        elif k:
+            line(415,y,". ",dim)
+            line(433,y,k+":",key)
+            line(433+(len(k)+2)*9,y,"."*(18-len(k)),dim)
+            line(620,y,v,val)
+    out.append("</g></svg>")
+    Path(theme+"_mode.svg").write_text("\n".join(out)+"\n")
