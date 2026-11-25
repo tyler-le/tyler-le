@@ -88,29 +88,67 @@ deleted = sum(v[1] for v in known)
 partial_diff = len(known) != len(eligible)
 diff_available = bool(known) and (added > 0 or deleted > 0)
 
-# GitHub exposes anonymized private contributions when profile sharing is enabled.
-# Do not request repository access or publish private repository names.
-total = private = "Unavailable"
+# Sum non-overlapping calendar-year contribution totals, including anonymized
+# private activity visible on the public contribution graph.
+from datetime import datetime, timezone
+
+def graphql(query, variables):
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": query, "variables": variables}).encode(),
+        headers={"Authorization": "Bearer " + TOKEN,
+                 "Content-Type": "application/json",
+                 "User-Agent": "profile-readme-generator"})
+    with urllib.request.urlopen(req, timeout=30) as response:
+        result = json.load(response)
+    if result.get("errors"):
+        raise ValueError("GitHub GraphQL query failed")
+    return result["data"]["user"]
+
+total = "Unavailable"
 try:
-    query = """query($login: String!) {
+    now = datetime.now(timezone.utc)
+    created = datetime.fromisoformat(profile["created_at"].replace("Z", "+00:00"))
+    query = """query($login: String!, $from: DateTime!, $to: DateTime!) {
       user(login: $login) {
-        contributionsCollection {
-          restrictedContributionsCount
+        contributionsCollection(from: $from, to: $to) {
           contributionCalendar { totalContributions }
         }
       }
     }"""
-    req = urllib.request.Request(
-        "https://api.github.com/graphql",
-        data=json.dumps({"query": query, "variables": {"login": USER}}).encode(),
-        headers={"Authorization": "Bearer " + TOKEN, "Content-Type": "application/json", "User-Agent": "profile-readme-generator"})
-    with urllib.request.urlopen(req, timeout=30) as response:
-        result = json.load(response)
-    c = result["data"]["user"]["contributionsCollection"]
-    total = f'{c["contributionCalendar"]["totalContributions"]:,}'
-    private = f'{c["restrictedContributionsCount"]:,}'
+    count = 0
+    for year in range(created.year, now.year + 1):
+        start = max(created, datetime(year, 1, 1, tzinfo=timezone.utc))
+        end = min(now, datetime(year, 12, 31, 23, 59, 59, tzinfo=timezone.utc))
+        c = graphql(query, {"login": USER, "from": start.isoformat(), "to": end.isoformat()})
+        count += c["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+    total = f"{count:,}"
 except (OSError, KeyError, TypeError, ValueError) as exc:
-    print("Contribution totals unavailable:", type(exc).__name__)
+    print("Lifetime contribution totals unavailable:", type(exc).__name__)
+# Count distinct public repositories contributed to, not just repositories owned.
+contributed = None
+try:
+    names = set()
+    cursor = None
+    query = """query($login: String!, $cursor: String) {
+      user(login: $login) {
+        repositoriesContributedTo(first: 100, after: $cursor, includeUserRepositories: true,
+          contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY, PULL_REQUEST_REVIEW]) {
+          nodes { nameWithOwner isPrivate }
+          pageInfo { hasNextPage endCursor }
+        }
+      }
+    }"""
+    while True:
+        result = graphql(query, {"login": USER, "cursor": cursor})["repositoriesContributedTo"]
+        names.update(r["nameWithOwner"] for r in result["nodes"] if r and not r["isPrivate"])
+        if not result["pageInfo"]["hasNextPage"]:
+            break
+        cursor = result["pageInfo"]["endCursor"]
+    if names:
+        contributed = f"{len(names):,}"
+except (OSError, KeyError, TypeError, ValueError) as exc:
+    print("Contributed repository count unavailable:", type(exc).__name__)
 # Prefer a separate portfolio URL from the public GitHub profile when present.
 website = (profile.get("blog") or "https://github.com/tyler-le").strip()
 if not website.startswith(("https://", "http://")):
@@ -134,9 +172,8 @@ rows = [
 ("Website", website_display),
 ("",""),
 ("- GitHub Stats",""),
-("Contribs (1 yr)",total),
-("Private (1 yr)",private),
-] + ([("Public code diff","__diff__")] if diff_available else []) + [
+("Contributions",total),
+] + ([("Repos contributed",contributed)] if contributed else []) + ([("Public code diff","__diff__")] if diff_available else []) + [
 ]
 for theme, bg, fg, key, val, dim in [
     ("dark","#161b22","#c9d1d9","#ffa657","#a5d6ff","#616e7f"),
