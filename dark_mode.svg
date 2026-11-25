@@ -1,4 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680"><rect width="1080" height="680" rx="15" fill="#161b22"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">
+<style>
+.cat-open { animation: cat-open 6s steps(1,end) infinite; }
+.cat-closed { opacity: 0; animation: cat-closed 6s steps(1,end) infinite; }
+@keyframes cat-open { 0%, 94%, 100% { opacity: 1; } 90% { opacity: 0; } }
+@keyframes cat-closed { 0%, 94%, 100% { opacity: 0; } 90% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .cat-open, .cat-closed { animation: none; }
+}
+</style>
 <text x="26" y="38.0" fill="#c9d1d9"></text>
 <text x="26" y="55.5" fill="#c9d1d9">        &amp;#MH</text>
 <text x="26" y="73.0" fill="#c9d1d9">       &amp;G5553</text>
@@ -12,9 +21,12 @@
 <text x="26" y="213.0" fill="#c9d1d9">     BHiXMS#SGGGMMhHhXhG22A25XA2XAAXAAsrXS</text>
 <text x="26" y="230.5" fill="#c9d1d9">    &amp;&amp;GX2G#####9#SMMG23M33hGSM55r2552AAAA#</text>
 <text x="26" y="248.0" fill="#c9d1d9">    @&amp;B9999#GMMMHh2XXA3M23GB@GssXM33h52rX#</text>
-<text x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr,,,,,;9#H#&amp;#h22i;;;X2552#</text>
-<text x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX;::i;A#@@@9GH;,,,,,iiX5G@</text>
-<text x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsr;;A2sis29</text>
+<text class="cat-open" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr,,,,,;9#H#&amp;#h22i;;;X2552#</text>
+<text class="cat-closed" opacity="0" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr2AAXXr9#H#&amp;#h22XAXrX2552#</text>
+<text class="cat-open" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX;::i;A#@@@9GH;,,,,,iiX5G@</text>
+<text class="cat-closed" opacity="0" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX-----A#@@@9GH-------iX5G@</text>
+<text class="cat-open" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsr;;A2sis29</text>
+<text class="cat-closed" opacity="0" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsX2AA2sis29</text>
 <text x="26" y="318.0" fill="#c9d1d9">   &amp;Sh2sX5MHHh2AXX2h#&amp;@@&amp;3XXri;2h2Xsi;irisG</text>
 <text x="26" y="335.5" fill="#c9d1d9">   @#hAX2hh35AAAA5M9@@@&amp;&amp;Mr,,,,Ah2i;;iirrrM</text>
 <text x="26" y="353.0" fill="#c9d1d9">   @&amp;Gh3h3Ar;:;s5hG&amp;&amp;9##GM2,,:sXAAX;:;isXXG</text>
