@@ -52,6 +52,21 @@ portrait = [
     "      hh533hhMMhMHS##GSH2AAAAAXXsrirssrrs",
     "              sXA5hhhhh32Aiirii;;::"
 ]
+# Blink frames replace only the eye rows; everything else stays still.
+blink_rows = {
+    13: "    @&B#GHhAXA5Hr2AAXXr9#H#&#h22XAXrX2552#",
+    14: "    &#Hhh5XX533HHX-----A#@@@9GH-------iX5G@",
+    15: "   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsX2AA2sis29",
+}
+blink_style = """<style>
+.cat-open { animation: cat-open 6s steps(1,end) infinite; }
+.cat-closed { opacity: 0; animation: cat-closed 6s steps(1,end) infinite; }
+@keyframes cat-open { 0%, 94%, 100% { opacity: 1; } 90% { opacity: 0; } }
+@keyframes cat-closed { 0%, 94%, 100% { opacity: 0; } 90% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .cat-open, .cat-closed { animation: none; }
+}
+</style>"""
 # Only aggregate counts are published. Never print repository identifiers or tokens.
 # Optional credentials must be explicitly approved for each private repository.
 from datetime import datetime, timezone
@@ -275,8 +290,14 @@ for theme, bg, fg, key, val, dim in [
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680"><rect width="1080" height="680" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
     def line(x,y,s,c):
         out.append(f'<text x="{x}" y="{y}" fill="{c}">{escape(s)}</text>')
+    out.append(blink_style)
     for i,s in enumerate(portrait):
-        line(26, 38+i*17.5, s, fg)
+        y = 38+i*17.5
+        if i in blink_rows:
+            out.append(f'<text class="cat-open" x="26" y="{y}" fill="{fg}">{escape(s)}</text>')
+            out.append(f'<text class="cat-closed" opacity="0" x="26" y="{y}" fill="{fg}">{escape(blink_rows[i])}</text>')
+        else:
+            line(26, y, s, fg)
     line(470,45,"tyler@le",fg)
     out.append(f'<path d="M 570 40 H 1050" stroke="{dim}"/>')
     for i,(k,v) in enumerate(rows):
