@@ -1,93 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="990" height="620" viewBox="0 0 990 620"><rect width="990" height="620" rx="15" fill="#f6f8fa"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">
-<text x="15" y="62" fill="#24292f"></text>
-<text x="15" y="81" fill="#24292f">               ,,,--=+,:-==-,:</text>
-<text x="15" y="100" fill="#24292f">           =+*****##%%**#*####*-:</text>
-<text x="15" y="119" fill="#24292f">         *#####*####%##*###*###%#+,</text>
-<text x="15" y="138" fill="#24292f">       *#%#####%%%#**+***#######%%%+</text>
-<text x="15" y="157" fill="#24292f">      *%%%%%%%%%#+=-,,=+***##%####%%*</text>
-<text x="15" y="176" fill="#24292f">     #%%@@@@@@%*=-,,:,-=++***#%%#%%%%+</text>
-<text x="15" y="195" fill="#24292f">    #%@@@@@@@#+-,,::::,,===+**#%%%%%@%+</text>
-<text x="15" y="214" fill="#24292f">   *@@@@@@@%+-,,:::..::,,=--+*+*%@@%%%%+</text>
-<text x="15" y="233" fill="#24292f">   #@%@@%#*-:,:,,----,,,,,,,==--+*#%%%%*</text>
-<text x="15" y="252" fill="#24292f">   *%%@%-,:,,,,:::,-===-,,--===-,,,=#@%*</text>
-<text x="15" y="271" fill="#24292f">   *@%@*,::,--==++=--==,:,-==-,,:::.-@%*</text>
-<text x="15" y="290" fill="#24292f">   +%@%=:,::,-++*#*++--,.:-=*##*+=,::##+</text>
-<text x="15" y="309" fill="#24292f">   ==*#-,:::...:,--,,,,:..,,-===-,::.+*</text>
-<text x="15" y="328" fill="#24292f">   +--+-,,::.......::::....:::::.....=+</text>
-<text x="15" y="347" fill="#24292f">   =,=--,,,::::::,--:.::::..:-,:::...=+</text>
-<text x="15" y="366" fill="#24292f">    :,,---------=+===+*+====-=++-,,::=+</text>
-<text x="15" y="385" fill="#24292f">     .,----====++-,-=+***+==-,=*+=--:=</text>
-<text x="15" y="404" fill="#24292f">      ,-----=-==+***+++++===++=++=-,.</text>
-<text x="15" y="423" fill="#24292f">       -=--------**=-,,,,,,-##=---,,</text>
-<text x="15" y="442" fill="#24292f">        =+==-=---------,,,,--,----,</text>
-<text x="15" y="461" fill="#24292f">         +++====-----====--,,,----</text>
-<text x="15" y="480" fill="#24292f">          ***+==--,,,,,-,,,:,,--+</text>
-<text x="15" y="499" fill="#24292f">            ****+--,::::::::,-=</text>
-<text x="15" y="518" fill="#24292f">             *###**+==-------</text>
-<text x="15" y="537" fill="#24292f">                **###****+</text>
-<text x="15" y="556" fill="#24292f"></text>
-<text x="415" y="31" fill="#24292f">tyler@le</text>
-<path d="M 500 26 H 965" stroke="#6e7781"/>
-<text x="415" y="60" fill="#6e7781">. </text>
-<text x="433" y="60" fill="#953800">Current:</text>
-<text x="514" y="60" fill="#6e7781">...........</text>
-<text x="620" y="60" fill="#0550ae">Google</text>
-<text x="415" y="84" fill="#6e7781">. </text>
-<text x="433" y="84" fill="#953800">Occupation:</text>
-<text x="541" y="84" fill="#6e7781">........</text>
-<text x="620" y="84" fill="#0550ae">Software Engineer</text>
-<text x="415" y="108" fill="#6e7781">. </text>
-<text x="433" y="108" fill="#953800">Education:</text>
-<text x="532" y="108" fill="#6e7781">.........</text>
-<text x="620" y="108" fill="#0550ae">UC San Diego | B.S. Computer Science</text>
-<text x="415" y="156" fill="#6e7781">. </text>
-<text x="433" y="156" fill="#953800">Languages:</text>
-<text x="532" y="156" fill="#6e7781">.........</text>
-<text x="620" y="156" fill="#0550ae">Kotlin, Java, Python</text>
-<text x="415" y="180" fill="#6e7781">. </text>
-<text x="433" y="180" fill="#953800">Backend:</text>
-<text x="514" y="180" fill="#6e7781">...........</text>
-<text x="620" y="180" fill="#0550ae">Spring Boot</text>
-<text x="415" y="204" fill="#6e7781">. </text>
-<text x="433" y="204" fill="#953800">Infrastructure:</text>
-<text x="577" y="204" fill="#6e7781">....</text>
-<text x="620" y="204" fill="#0550ae">AWS</text>
-<text x="415" y="228" fill="#6e7781">. </text>
-<text x="433" y="228" fill="#953800">Frontend:</text>
-<text x="523" y="228" fill="#6e7781">..........</text>
-<text x="620" y="228" fill="#0550ae">React, Next.js</text>
-<text x="415" y="252" fill="#6e7781">. </text>
-<text x="433" y="252" fill="#953800">Interests:</text>
-<text x="532" y="252" fill="#6e7781">.........</text>
-<text x="620" y="252" fill="#0550ae">Data pipelines</text>
-<text x="415" y="276" fill="#6e7781">. </text>
-<text x="433" y="276" fill="#953800">Personal:</text>
-<text x="523" y="276" fill="#6e7781">..........</text>
-<text x="620" y="276" fill="#0550ae">Smart home automation, aquariums</text>
-<text x="415" y="324" fill="#24292f">- Contact</text>
-<path d="M 506 319 H 965" stroke="#6e7781"/>
-<text x="415" y="348" fill="#6e7781">. </text>
-<text x="433" y="348" fill="#953800">LinkedIn:</text>
-<text x="523" y="348" fill="#6e7781">..........</text>
-<text x="620" y="348" fill="#0550ae">linkedin.com/in/le-tyler</text>
-<text x="415" y="372" fill="#6e7781">. </text>
-<text x="433" y="372" fill="#953800">Website:</text>
-<text x="514" y="372" fill="#6e7781">...........</text>
-<text x="620" y="372" fill="#0550ae">www.linkedin.com/in/le-tyler</text>
-<text x="415" y="420" fill="#24292f">- GitHub Stats</text>
-<path d="M 551 415 H 965" stroke="#6e7781"/>
-<text x="415" y="444" fill="#6e7781">. </text>
-<text x="433" y="444" fill="#953800">Contributions:</text>
-<text x="568" y="444" fill="#6e7781">.....</text>
-<text x="620" y="444" fill="#0550ae">9,464</text>
-<text x="415" y="468" fill="#6e7781">. </text>
-<text x="433" y="468" fill="#953800">Public repos:</text>
-<text x="559" y="468" fill="#6e7781">......</text>
-<text x="620" y="468" fill="#0550ae">32+</text>
-<text x="415" y="492" fill="#6e7781">. </text>
-<text x="433" y="492" fill="#953800">Public code diff:</text>
-<text x="595" y="492" fill="#6e7781">..</text>
-<text x="620" y="492" fill="#1a7f37">+9,708,178</text>
-<text x="728" y="492" fill="#cf222e">-4,342,191</text>
-<text x="836" y="492" fill="#6e7781">(partial)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680"><rect width="1080" height="680" rx="15" fill="#f6f8fa"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">
+<text x="26" y="38" fill="#24292f"></text>
+<text x="26" y="55.5" fill="#24292f">        &amp;#MH</text>
+<text x="26" y="73" fill="#24292f">       &amp;G5553</text>
+<text x="26" y="90.5" fill="#24292f">       G3hhh3h                        G3hB</text>
+<text x="26" y="108" fill="#24292f">      S3MGHMMMh                     S3AsiH</text>
+<text x="26" y="125.5" fill="#24292f">      3355hHMHhM                   Gh352Xh</text>
+<text x="26" y="143" fill="#24292f">     G3525hhMHMMS                 Ghh33353</text>
+<text x="26" y="160.5" fill="#24292f">     S52AA5MHHS99#SGGGGS#SS#### #Gh33335A2&amp;</text>
+<text x="26" y="178" fill="#24292f">     #h2Xrirh###GGHMHGhMGHhMHHhMHHMHh32Xr2@</text>
+<text x="26" y="195.5" fill="#24292f">     GhAXA533SSGMhhhh323232252A2h33355s;ih</text>
+<text x="26" y="213" fill="#24292f">     BHiXMS#SGGGMMhHhXhG22A25XA2XAAXAAsrXS</text>
+<text x="26" y="230.5" fill="#24292f">    &amp;&amp;GX2G#####9#SMMG23M33hGSM55r2552AAAA#</text>
+<text x="26" y="248" fill="#24292f">    @&amp;B9999#GMMMHh2XXA3M23GB@GssXM33h52rX#</text>
+<text x="26" y="265.5" fill="#24292f">    @&amp;B#GHhAXA5Hr,,,,,;9#H#&amp;#h22i;;;X2552#</text>
+<text x="26" y="283" fill="#24292f">    &amp;#Hhh5XX533HHX;::i;A#@@@9GH;,,,,,iiX5G@</text>
+<text x="26" y="300.5" fill="#24292f">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsr;;A2sis29</text>
+<text x="26" y="318" fill="#24292f">   &amp;Sh2sX5MHHh2AXX2h#&amp;@@&amp;3XXri;2h2Xsi;irisG</text>
+<text x="26" y="335.5" fill="#24292f">   @#hAX2hh35AAAA5M9@@@&amp;&amp;Mr,,,,Ah2i;;iirrrM</text>
+<text x="26" y="353" fill="#24292f">   @&amp;Gh3h3Ar;:;s5hG&amp;&amp;9##GM2,,:sXAAX;:;isXXG</text>
+<text x="26" y="370.5" fill="#24292f">    @9M352Xrrrss2hMSSM52X:,,,,,;iXA;,,,i2S&amp;</text>
+<text x="26" y="388" fill="#24292f">    @&amp;9GM32XsrrsX22A2As;,,,,,,,:rs;,,,:sH&amp;</text>
+<text x="26" y="405.5" fill="#24292f">     @9#SGM32AXsXAAXXAAAXsr;;;,:;::;iiAG&amp;</text>
+<text x="26" y="423" fill="#24292f">      #SHGSGMh32AXssXsXAXsirri:,,,,rAG9</text>
+<text x="26" y="440.5" fill="#24292f">     9SGHMGSGMh52XXXssrii;;::,,:;rs3S</text>
+<text x="26" y="458" fill="#24292f">     BSS9999#GM32Xrrr;:,:;:::;;irX3#</text>
+<text x="26" y="475.5" fill="#24292f">    9#9B&amp;&amp;@&amp;9#Hh52Xi;;;:::,::;;;rXH&amp;@</text>
+<text x="26" y="493" fill="#24292f">   GSS#B&amp;&amp;&amp;&amp;B#SHh32Asrriiii;iiiiir5#@</text>
+<text x="26" y="510.5" fill="#24292f">   HHGS#9BBBBB#GMM325522AAXXXsrrrrs3B@</text>
+<text x="26" y="528" fill="#24292f">  HHGS#S#9B&amp;B&amp;&amp;9SSGHhhh55552AAAXsssXM&amp;@</text>
+<text x="26" y="545.5" fill="#24292f">  GHGS##SS#9###9SGGGGGGGHMMHMh2Xrirr29@@</text>
+<text x="26" y="563" fill="#24292f">  #SSS#999#9999#99##9#SGGSGGM32XsrrrXG@@</text>
+<text x="26" y="580.5" fill="#24292f">  h3MGSSS9#9BBBB99SGS###HMHM32XXXXsssAS&amp;@</text>
+<text x="26" y="598" fill="#24292f">  GHHGGSSSSS99999GMMHSSSGHM32AXXXsrsssAG&amp;</text>
+<text x="26" y="615.5" fill="#24292f">  9##9#GGGGS#999#SGSSHMh5535555XsriiirsA#@</text>
+<text x="26" y="633" fill="#24292f">      hh533hhMMhMHS##GSH2AAAAAXXsrirssrrs</text>
+<text x="26" y="650.5" fill="#24292f">              sXA5hhhhh32Aiirii;;::</text>
+<text x="470" y="45" fill="#24292f">tyler@le</text>
+<path d="M 555 40 H 1050" stroke="#6e7781"/>
+<text x="470" y="80" fill="#6e7781">. </text>
+<text x="488" y="80" fill="#953800">Current:</text>
+<text x="569" y="80" fill="#6e7781">...........</text>
+<text x="675" y="80" fill="#0550ae">Google</text>
+<text x="470" y="110" fill="#6e7781">. </text>
+<text x="488" y="110" fill="#953800">Occupation:</text>
+<text x="596" y="110" fill="#6e7781">........</text>
+<text x="675" y="110" fill="#0550ae">Software Engineer</text>
+<text x="470" y="140" fill="#6e7781">. </text>
+<text x="488" y="140" fill="#953800">Education:</text>
+<text x="587" y="140" fill="#6e7781">.........</text>
+<text x="675" y="140" fill="#0550ae">UC San Diego | B.S. Computer Science</text>
+<text x="470" y="200" fill="#6e7781">. </text>
+<text x="488" y="200" fill="#953800">Languages:</text>
+<text x="587" y="200" fill="#6e7781">.........</text>
+<text x="675" y="200" fill="#0550ae">Kotlin, Java, Python</text>
+<text x="470" y="230" fill="#6e7781">. </text>
+<text x="488" y="230" fill="#953800">Backend:</text>
+<text x="569" y="230" fill="#6e7781">...........</text>
+<text x="675" y="230" fill="#0550ae">Spring Boot</text>
+<text x="470" y="260" fill="#6e7781">. </text>
+<text x="488" y="260" fill="#953800">Infrastructure:</text>
+<text x="632" y="260" fill="#6e7781">....</text>
+<text x="675" y="260" fill="#0550ae">AWS</text>
+<text x="470" y="290" fill="#6e7781">. </text>
+<text x="488" y="290" fill="#953800">Frontend:</text>
+<text x="578" y="290" fill="#6e7781">..........</text>
+<text x="675" y="290" fill="#0550ae">React, Next.js</text>
+<text x="470" y="320" fill="#6e7781">. </text>
+<text x="488" y="320" fill="#953800">Interests:</text>
+<text x="587" y="320" fill="#6e7781">.........</text>
+<text x="675" y="320" fill="#0550ae">Data pipelines</text>
+<text x="470" y="350" fill="#6e7781">. </text>
+<text x="488" y="350" fill="#953800">Personal:</text>
+<text x="578" y="350" fill="#6e7781">..........</text>
+<text x="675" y="350" fill="#0550ae">Smart home automation, aquariums</text>
+<text x="470" y="410" fill="#24292f">- Contact</text>
+<path d="M 561 405 H 1050" stroke="#6e7781"/>
+<text x="470" y="440" fill="#6e7781">. </text>
+<text x="488" y="440" fill="#953800">LinkedIn:</text>
+<text x="578" y="440" fill="#6e7781">..........</text>
+<text x="675" y="440" fill="#0550ae">linkedin.com/in/le-tyler</text>
+<text x="470" y="470" fill="#6e7781">. </text>
+<text x="488" y="470" fill="#953800">Website:</text>
+<text x="569" y="470" fill="#6e7781">...........</text>
+<text x="675" y="470" fill="#0550ae">github.com/tyler-le</text>
+<text x="470" y="530" fill="#24292f">- GitHub Stats</text>
+<path d="M 606 525 H 1050" stroke="#6e7781"/>
+<text x="470" y="560" fill="#6e7781">. </text>
+<text x="488" y="560" fill="#953800">Contributions:</text>
+<text x="623" y="560" fill="#6e7781">.....</text>
+<text x="675" y="560" fill="#0550ae">9,464</text>
+<text x="470" y="590" fill="#6e7781">. </text>
+<text x="488" y="590" fill="#953800">Repos contributed:</text>
+<text x="659" y="590" fill="#6e7781">.</text>
+<text x="675" y="590" fill="#0550ae">32+</text>
+<text x="470" y="620" fill="#6e7781">. </text>
+<text x="488" y="620" fill="#953800">Code diff:</text>
+<text x="578" y="620" fill="#6e7781">..........</text>
+<text x="675" y="620" fill="#1a7f37">+9,708,178</text>
+<text x="783" y="620" fill="#cf222e">-4,342,191</text>
 </g></svg>
