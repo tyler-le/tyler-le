@@ -5,10 +5,11 @@ from html import escape
 
 USER = "tyler-le"
 TOKEN = os.environ.get("GH_TOKEN", "")
-def get(url, auth=False):
+STATS_TOKENS = list(dict.fromkeys(t for t in (os.environ.get("STATS_TOKEN"), os.environ.get("STATS_TOKEN_2"), os.environ.get("STATS_TOKEN_3")) if t))
+def get(url, auth=False, token=None):
     headers = {"User-Agent": "profile-readme-generator"}
-    if auth and TOKEN:
-        headers["Authorization"] = "Bearer " + TOKEN
+    if auth and (token or TOKEN):
+        headers["Authorization"] = "Bearer " + (token or TOKEN)
     with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
         return r.read()
 profile = json.loads(get("https://api.github.com/users/" + USER, True))
@@ -42,61 +43,18 @@ portrait = [
     "                **###****+",
     ""
 ]
-repos = []
-for page in range(1, 101):
-    batch = json.loads(get(f"https://api.github.com/users/{USER}/repos?per_page=100&page={page}", True))
-    repos.extend(batch)
-    if len(batch) < 100: break
-# Public default-branch code changes attributed to this GitHub account.
-# Do not access or publish private employer repository diff statistics.
+# Only aggregate counts are published. Never print repository identifiers or tokens.
+# Optional credentials must be explicitly approved for each private repository.
+from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import quote
 import time
 
-def repo_diff(repo):
-    if not repo.get("size"):
-        return (0, 0)
-    url = "https://api.github.com/repos/" + repo["full_name"] + "/stats/contributors"
-    for delay in (0, 2, 5):
-        if delay:
-            time.sleep(delay)
-        try:
-            raw = get(url, True)
-            if not raw:
-                continue
-            data = json.loads(raw)
-            if not isinstance(data, list):
-                continue
-            for contributor in data:
-                if (contributor.get("author") or {}).get("login", "").lower() == USER.lower():
-                    a = sum(w["a"] for w in contributor["weeks"])
-                    d = sum(w["d"] for w in contributor["weeks"])
-                    if contributor["total"] and a == 0 and d == 0:
-                        return None
-                    return (a, d)
-            return (0, 0)
-        except (OSError, ValueError, KeyError, TypeError):
-            continue
-    return None
-
-eligible = [r for r in repos if not r.get("private") and not r.get("fork")
-            and r["full_name"].lower() != f"{USER}/{USER}".lower()]
-with ThreadPoolExecutor(max_workers=4) as pool:
-    diffs = list(pool.map(repo_diff, eligible))
-known = [v for v in diffs if v is not None]
-added = sum(v[0] for v in known)
-deleted = sum(v[1] for v in known)
-partial_diff = len(known) != len(eligible)
-diff_available = bool(known) and (added > 0 or deleted > 0)
-
-# Sum non-overlapping calendar-year contribution totals, including anonymized
-# private activity visible on the public contribution graph.
-from datetime import datetime, timezone
-
-def graphql(query, variables):
+def graphql(query, variables, token):
     req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": query, "variables": variables}).encode(),
-        headers={"Authorization": "Bearer " + TOKEN,
+        headers={"Authorization": "Bearer " + token,
                  "Content-Type": "application/json",
                  "User-Agent": "profile-readme-generator"})
     with urllib.request.urlopen(req, timeout=30) as response:
@@ -105,50 +63,181 @@ def graphql(query, variables):
         raise ValueError("GitHub GraphQL query failed")
     return result["data"]["user"]
 
+tokens = [TOKEN] + [t for t in STATS_TOKENS if t != TOKEN]
+discovered = {}
+contributed_names = set()
+commit_names = set()
+private_names = set()
+discovery_partial = False
+
+def remember(r, token, contributed=True, commits=False):
+    name = r["nameWithOwner"]
+    private = r["isPrivate"]
+    # Public workflow token is not used to collect private repository statistics.
+    if private and token not in STATS_TOKENS:
+        return
+    key = name.lower()
+    entry = discovered.setdefault(key, {"name": name, "private": private, "tokens": []})
+    if token not in entry["tokens"]:
+        entry["tokens"].append(token)
+    if contributed:
+        contributed_names.add(key)
+    if commits:
+        commit_names.add(key)
+    if private:
+        private_names.add(key)
+
+now = datetime.now(timezone.utc)
+created = datetime.fromisoformat(profile["created_at"].replace("Z", "+00:00"))
 total = "Unavailable"
-try:
-    now = datetime.now(timezone.utc)
-    created = datetime.fromisoformat(profile["created_at"].replace("Z", "+00:00"))
-    query = """query($login: String!, $from: DateTime!, $to: DateTime!) {
-      user(login: $login) {
-        contributionsCollection(from: $from, to: $to) {
-          contributionCalendar { totalContributions }
-        }
+restricted = None
+# The anonymous public calendar already includes shared private contributions.
+# Never sum overlapping totals from different credentials.
+calendar_query = """query($login: String!, $from: DateTime!, $to: DateTime!) {
+  user(login: $login) {
+    contributionsCollection(from: $from, to: $to) {
+      contributionCalendar { totalContributions }
+      restrictedContributionsCount
+    }
+  }
+}"""
+repo_query = """query($login: String!, $from: DateTime!, $to: DateTime!) {
+  user(login: $login) {
+    contributionsCollection(from: $from, to: $to) {
+      commitContributionsByRepository(maxRepositories: 100) {
+        repository { nameWithOwner isPrivate }
       }
-    }"""
-    count = 0
-    for year in range(created.year, now.year + 1):
-        start = max(created, datetime(year, 1, 1, tzinfo=timezone.utc))
-        end = min(now, datetime(year, 12, 31, 23, 59, 59, tzinfo=timezone.utc))
-        c = graphql(query, {"login": USER, "from": start.isoformat(), "to": end.isoformat()})
-        count += c["contributionsCollection"]["contributionCalendar"]["totalContributions"]
-    total = f"{count:,}"
-except (OSError, KeyError, TypeError, ValueError) as exc:
-    print("Lifetime contribution totals unavailable:", type(exc).__name__)
-# Count distinct public repositories contributed to, not just repositories owned.
-contributed = None
-try:
-    names = set()
-    cursor = None
-    query = """query($login: String!, $cursor: String) {
-      user(login: $login) {
-        repositoriesContributedTo(first: 100, after: $cursor, includeUserRepositories: true,
-          contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY, PULL_REQUEST_REVIEW]) {
-          nodes { nameWithOwner isPrivate }
-          pageInfo { hasNextPage endCursor }
-        }
+      pullRequestContributionsByRepository(maxRepositories: 100) {
+        repository { nameWithOwner isPrivate }
       }
-    }"""
-    while True:
-        result = graphql(query, {"login": USER, "cursor": cursor})["repositoriesContributedTo"]
-        names.update(r["nameWithOwner"] for r in result["nodes"] if r and not r["isPrivate"])
-        if not result["pageInfo"]["hasNextPage"]:
+      issueContributionsByRepository(maxRepositories: 100) {
+        repository { nameWithOwner isPrivate }
+      }
+      pullRequestReviewContributionsByRepository(maxRepositories: 100) {
+        repository { nameWithOwner isPrivate }
+      }
+    }
+  }
+}"""
+ranges = [
+    {"login": USER,
+     "from": max(created, datetime(year, 1, 1, tzinfo=timezone.utc)).isoformat(),
+     "to": min(now, datetime(year, 12, 31, 23, 59, 59, tzinfo=timezone.utc)).isoformat()}
+    for year in range(created.year, now.year + 1)
+]
+# Use the largest complete calendar result, without double-counting activity.
+totals = []
+for token in tokens:
+    if not token:
+        continue
+    try:
+        count = hidden = 0
+        for args in ranges:
+            c = graphql(calendar_query, args, token)["contributionsCollection"]
+            count += c["contributionCalendar"]["totalContributions"]
+            hidden += c["restrictedContributionsCount"]
+        totals.append((count, hidden))
+    except (OSError, KeyError, TypeError, ValueError):
+        print("One contribution calendar could not be retrieved.")
+    for args in ranges:
+        try:
+            c = graphql(repo_query, args, token)["contributionsCollection"]
+            for kind, entries in c.items():
+                if len(entries) >= 100:
+                    discovery_partial = True
+                for entry in entries:
+                    remember(entry["repository"], token, commits=kind == "commitContributionsByRepository")
+        except (OSError, KeyError, TypeError, ValueError):
+            discovery_partial = True
+if totals:
+    total = f"{max(n for n, _ in totals):,}"
+    restricted = min(h for _, h in totals)
+
+# Also preserve public owned-repository coverage and include all approved
+# repositories returned by the recent-contribution connection.
+recent_query = """query($login: String!, $cursor: String) {
+  user(login: $login) {
+    repositoriesContributedTo(first: 100, after: $cursor, includeUserRepositories: true,
+      contributionTypes: [COMMIT, ISSUE, PULL_REQUEST, REPOSITORY, PULL_REQUEST_REVIEW]) {
+      nodes { nameWithOwner isPrivate }
+      pageInfo { hasNextPage endCursor }
+    }
+  }
+}"""
+for token in tokens:
+    if not token:
+        continue
+    try:
+        cursor = None
+        while True:
+            c = graphql(recent_query, {"login": USER, "cursor": cursor}, token)["repositoriesContributedTo"]
+            for r in c["nodes"]:
+                if r:
+                    remember(r, token)
+            if not c["pageInfo"]["hasNextPage"]:
+                break
+            cursor = c["pageInfo"]["endCursor"]
+    except (OSError, KeyError, TypeError, ValueError):
+        discovery_partial = True
+try:
+    for page in range(1, 101):
+        batch = json.loads(get(f"https://api.github.com/users/{USER}/repos?per_page=100&page={page}", True))
+        for r in batch:
+            if not r.get("private") and not r.get("fork") and r.get("size"):
+                remember({"nameWithOwner": r["full_name"], "isPrivate": False}, TOKEN, contributed=False)
+        if len(batch) < 100:
             break
-        cursor = result["pageInfo"]["endCursor"]
-    if names:
-        contributed = f"{len(names):,}"
-except (OSError, KeyError, TypeError, ValueError) as exc:
-    print("Contributed repository count unavailable:", type(exc).__name__)
+except (OSError, KeyError, TypeError, ValueError):
+    discovery_partial = True
+
+# The contributor endpoint exposes aggregate weekly line counts, not source code.
+# Large repositories can return zeroed diffs; missing values are not counted as zero.
+def repo_diff(item):
+    key, r = item
+    if key == f"{USER}/{USER}":
+        return (key, 0, 0, False)
+    url = "https://api.github.com/repos/" + quote(r["name"], safe="/") + "/stats/contributors"
+    auth_tokens = [t for t in r["tokens"] if t] if r["private"] else list(dict.fromkeys([TOKEN] + r["tokens"]))
+    for token in auth_tokens:
+        for delay in (0, 2, 5):
+            if delay:
+                time.sleep(delay)
+            try:
+                raw = get(url, True, token=token)
+                if not raw:
+                    continue
+                data = json.loads(raw)
+                if not isinstance(data, list):
+                    continue
+                for contributor in data:
+                    if (contributor.get("author") or {}).get("login", "").lower() == USER.lower():
+                        a = sum(w["a"] for w in contributor["weeks"])
+                        d = sum(w["d"] for w in contributor["weeks"])
+                        if contributor["total"] and a == 0 and d == 0:
+                            break
+                        return (key, a, d, contributor["total"] > 0)
+                else:
+                    # An attributed commit in the contribution graph may be
+                    # absent from contributor stats, so do not assume zero.
+                    if key not in commit_names:
+                        return (key, 0, 0, False)
+            except (OSError, ValueError, KeyError, TypeError):
+                continue
+    return None
+
+with ThreadPoolExecutor(max_workers=4) as pool:
+    diffs = list(pool.map(repo_diff, discovered.items()))
+known = [v for v in diffs if v is not None]
+contributed_names.update(k for k, _, _, has_commits in known if has_commits)
+added = sum(v[1] for v in known)
+deleted = sum(v[2] for v in known)
+private_diff = any(k in private_names and has_commits for k, _, _, has_commits in known)
+partial_diff = (discovery_partial or len(known) != len(discovered)
+                or restricted is None or restricted > 0)
+diff_available = bool(known) and (added > 0 or deleted > 0)
+contributed = f"{len(contributed_names):,}" if contributed_names else None
+if contributed and (discovery_partial or restricted is None or restricted > 0):
+    contributed += "+"
 # Prefer a separate portfolio URL from the public GitHub profile when present.
 website = (profile.get("blog") or "https://github.com/tyler-le").strip()
 if not website.startswith(("https://", "http://")):
@@ -173,7 +262,7 @@ rows = [
 ("",""),
 ("- GitHub Stats",""),
 ("Contributions",total),
-] + ([("Repos contributed",contributed)] if contributed else []) + ([("Public code diff","__diff__")] if diff_available else []) + [
+] + ([("Repos contributed" if private_names else "Public repos",contributed)] if contributed else []) + ([("Code changes" if private_diff else "Public code diff","__diff__")] if diff_available else []) + [
 ]
 for theme, bg, fg, key, val, dim in [
     ("dark","#161b22","#c9d1d9","#ffa657","#a5d6ff","#616e7f"),
