@@ -79,14 +79,15 @@
 <text x="415" y="444" fill="#6e7781">. </text>
 <text x="433" y="444" fill="#953800">Contributions:</text>
 <text x="568" y="444" fill="#6e7781">.....</text>
-<text x="620" y="444" fill="#0550ae">9,462</text>
+<text x="620" y="444" fill="#0550ae">9,464</text>
 <text x="415" y="468" fill="#6e7781">. </text>
-<text x="433" y="468" fill="#953800">Repos contributed:</text>
-<text x="604" y="468" fill="#6e7781">.</text>
-<text x="620" y="468" fill="#0550ae">7</text>
+<text x="433" y="468" fill="#953800">Public repos:</text>
+<text x="559" y="468" fill="#6e7781">......</text>
+<text x="620" y="468" fill="#0550ae">32+</text>
 <text x="415" y="492" fill="#6e7781">. </text>
 <text x="433" y="492" fill="#953800">Public code diff:</text>
 <text x="595" y="492" fill="#6e7781">..</text>
-<text x="620" y="492" fill="#1a7f37">+8,431,576</text>
-<text x="728" y="492" fill="#cf222e">-3,114,638</text>
+<text x="620" y="492" fill="#1a7f37">+9,708,178</text>
+<text x="728" y="492" fill="#cf222e">-4,342,191</text>
+<text x="836" y="492" fill="#6e7781">(partial)</text>
 </g></svg>
