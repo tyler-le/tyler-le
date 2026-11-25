@@ -97,9 +97,16 @@ for theme, bg, fg, key, val, dim in [
     out.append("</g></svg>")
     Path(theme+"_mode.svg").write_text("\n".join(out)+"\n")
 
-Path("README.md").write_text("""<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./dark_mode.svg">
-  <img alt="Tyler Le | Software Engineer | Terminal-style profile" src="./light_mode.svg">
+from hashlib import sha256
+
+def asset_url(theme):
+    path = Path(theme + "_mode.svg")
+    version = sha256(path.read_bytes()).hexdigest()[:12]
+    return f"https://raw.githubusercontent.com/tyler-le/tyler-le/master/{path.name}?v={version}"
+
+Path("README.md").write_text(f"""<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="{asset_url('dark')}">
+  <img alt="Tyler Le | Software Engineer | Terminal-style profile" src="{asset_url('light')}">
 </picture>
 
 [LinkedIn](https://www.linkedin.com/in/le-tyler/) · [GitHub](https://github.com/tyler-le)
