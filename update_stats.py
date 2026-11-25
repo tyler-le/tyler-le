@@ -250,8 +250,8 @@ if contributed and (discovery_partial or restricted is None or restricted > 0):
 website_display = "github.com/tyler-le"
 joined = date.today() >= date(2026,12,14)
 rows = [
-("Current", "Google"),
-("Occupation", "Software Engineer"),
+("Company", "Google"),
+("Role", "Software Engineer"),
 ("Education", "UC San Diego | B.S. Computer Science"),
 ("",""),
 ("Languages", "Kotlin, Java, Python"),
