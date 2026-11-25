@@ -96,10 +96,8 @@ if not website.startswith(("https://", "http://")):
 website_display = website.removeprefix("https://").removeprefix("http://").rstrip("/")
 joined = date.today() >= date(2026,12,14)
 rows = [
-("Company", "Google" if joined else "Coursera"),
-("Role", "Software Engineer"),
-("Incoming" if not joined else "Previously", "Google" if not joined else "Coursera, Amazon Ads"),
-("Previously" if not joined else "Location", "Amazon Ads" if not joined else "California, USA"),
+("Current", "Google" if joined else "Coursera"),
+("Occupation", "Software Engineer"),
 ("Education", "UC San Diego | B.S. Computer Science"),
 ("",""),
 ("Languages", "Java, Python, C++, JavaScript, SQL"),
