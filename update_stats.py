@@ -52,21 +52,55 @@ portrait = [
     "      hh533hhMMhMHS##GSH2AAAAAXXsrirssrrs",
     "              sXA5hhhhh32Aiirii;;::"
 ]
-# Blink frames replace only the eye rows; everything else stays still.
-blink_rows = {
-    13: "    @&B#GHhAXA5Hr2AAXXr9#H#&#h22XAXrX2552#",
-    14: "    &#Hhh5XX533HHX-----A#@@@9GH-------iX5G@",
-    15: "   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsX2AA2sis29",
+# Animate eye rows only and preserve the resting portrait.
+cat_frames = {
+    "left": {
+        13: "    @&B#GHhAXA5Hr;:s;;;9#H#&#h22s;;;X2552#",
+        14: "    &#Hhh5XX533HHXX:,,;A#@@@9GH;X,,,,;iX5G@",
+        15: "   @9Hh3AX5h32AAAs3hH#GHB@B#GMhAXr;;A2sis29",
+    },
+    "right": {
+        13: "    @&B#GHhAXA5Hr;;;s:;9#H#&#h22;;;sX2552#",
+        14: "    &#Hhh5XX533HHX;,,X;A#@@@9GH;,,,,X;iX5G@",
+        15: "   @9Hh3AX5h32AAA53hX#GHB@B#GMhAsr;XA2sis29",
+    },
+    "down": {
+        13: "    @&B#GHhAXA5Hr;;;;;;9#H#&#h22;;;;X2552#",
+        14: "    &#Hhh5XX533HHX;,,,;A#@@@9GH;,,,,,;iX5G@",
+        15: "   @9Hh3AX5h32AAA5XhH#GHB@B#GMhAsrX;A2sis29",
+    },
+    "blink": {
+        13: "    @&B#GHhAXA5Hr2AAXXr9#H#&#h22XAXrX2552#",
+        14: "    &#Hhh5XX533HHX-----A#@@@9GH-------iX5G@",
+        15: "   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsX2AA2sis29",
+    },
 }
-blink_style = """<style>
-.cat-open { animation: cat-open 6s steps(1,end) infinite; }
-.cat-closed { opacity: 0; animation: cat-closed 6s steps(1,end) infinite; }
-@keyframes cat-open { 0%, 94%, 100% { opacity: 1; } 90% { opacity: 0; } }
-@keyframes cat-closed { 0%, 94%, 100% { opacity: 0; } 90% { opacity: 1; } }
+laser_style = """<style>
+.cat-base { opacity: 1; animation: cat-base 8s steps(1,end) infinite; }
+@keyframes cat-base { 0%,64%,78%,100% { opacity: 1; } 25%,75% { opacity: 0; } }
+.cat-left { opacity: 0; animation: cat-left 8s steps(1,end) infinite; }
+@keyframes cat-left { 0%,38%,100% { opacity: 0; } 25% { opacity: 1; } }
+.cat-right { opacity: 0; animation: cat-right 8s steps(1,end) infinite; }
+@keyframes cat-right { 0%,51%,100% { opacity: 0; } 38% { opacity: 1; } }
+.cat-down { opacity: 0; animation: cat-down 8s steps(1,end) infinite; }
+@keyframes cat-down { 0%,64%,100% { opacity: 0; } 51% { opacity: 1; } }
+.cat-blink { opacity: 0; animation: cat-blink 8s steps(1,end) infinite; }
+@keyframes cat-blink { 0%,78%,100% { opacity: 0; } 75% { opacity: 1; } }
+.laser-dot { opacity: 0; animation: laser-path 8s ease-in-out infinite, laser-visible 8s steps(1,end) infinite; }
+@keyframes laser-visible { 0%,64%,100% { opacity: 0; } 25% { opacity: 1; } }
+@keyframes laser-path {
+  0%,32% { transform: translate(46px,230px); }
+  38%,45% { transform: translate(439px,205px); }
+  51%,64% { transform: translate(414px,430px); }
+  100% { transform: translate(46px,230px); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .cat-open, .cat-closed { animation: none; }
+  .cat-base,.cat-left,.cat-right,.cat-down,.cat-blink,.laser-dot { animation: none; }
+  .cat-base { opacity: 1; }
+  .cat-left,.cat-right,.cat-down,.cat-blink,.laser-dot { opacity: 0; }
 }
 </style>"""
+laser_dot = '<g class="laser-dot" opacity="0"><circle cx="0" cy="0" r="9" fill="#f85149" opacity="0.15"/><circle cx="0" cy="0" r="4" fill="#f85149"/><circle cx="0" cy="0" r="1.5" fill="#ffe3e3"/></g>'
 # Only aggregate counts are published. Never print repository identifiers or tokens.
 # Optional credentials must be explicitly approved for each private repository.
 from datetime import datetime, timezone
@@ -262,7 +296,7 @@ diff_available = bool(known) and (added > 0 or deleted > 0)
 contributed = f"{len(contributed_names):,}" if contributed_names else None
 if contributed and (discovery_partial or restricted is None or restricted > 0):
     contributed += "+"
-website_display = "github.com/tyler-le"
+website_display = "www.tylerle.dev"
 joined = date.today() >= date(2026,12,14)
 rows = [
 ("Company", "Google"),
@@ -290,14 +324,16 @@ for theme, bg, fg, key, val, dim in [
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680"><rect width="1080" height="680" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
     def line(x,y,s,c):
         out.append(f'<text x="{x}" y="{y}" fill="{c}">{escape(s)}</text>')
-    out.append(blink_style)
+    out.append(laser_style)
     for i,s in enumerate(portrait):
         y = 38+i*17.5
-        if i in blink_rows:
-            out.append(f'<text class="cat-open" x="26" y="{y}" fill="{fg}">{escape(s)}</text>')
-            out.append(f'<text class="cat-closed" opacity="0" x="26" y="{y}" fill="{fg}">{escape(blink_rows[i])}</text>')
+        if i in cat_frames["blink"]:
+            out.append(f'<text class="cat-base" x="26" y="{y}" fill="{fg}">{escape(s)}</text>')
+            for state, frame in cat_frames.items():
+                out.append(f'<text class="cat-{state}" opacity="0" x="26" y="{y}" fill="{fg}">{escape(frame.get(i,s))}</text>')
         else:
             line(26, y, s, fg)
+    out.append(laser_dot)
     line(470,45,"tyler@le",fg)
     out.append(f'<path d="M 570 40 H 1050" stroke="{dim}"/>')
     for i,(k,v) in enumerate(rows):
