@@ -1,11 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680"><rect width="1080" height="680" rx="15" fill="#161b22"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">
 <style>
-.cat-open { animation: cat-open 6s steps(1,end) infinite; }
-.cat-closed { opacity: 0; animation: cat-closed 6s steps(1,end) infinite; }
-@keyframes cat-open { 0%, 94%, 100% { opacity: 1; } 90% { opacity: 0; } }
-@keyframes cat-closed { 0%, 94%, 100% { opacity: 0; } 90% { opacity: 1; } }
+.cat-base { opacity: 1; animation: cat-base 8s steps(1,end) infinite; }
+@keyframes cat-base { 0%,64%,78%,100% { opacity: 1; } 25%,75% { opacity: 0; } }
+.cat-left { opacity: 0; animation: cat-left 8s steps(1,end) infinite; }
+@keyframes cat-left { 0%,38%,100% { opacity: 0; } 25% { opacity: 1; } }
+.cat-right { opacity: 0; animation: cat-right 8s steps(1,end) infinite; }
+@keyframes cat-right { 0%,51%,100% { opacity: 0; } 38% { opacity: 1; } }
+.cat-down { opacity: 0; animation: cat-down 8s steps(1,end) infinite; }
+@keyframes cat-down { 0%,64%,100% { opacity: 0; } 51% { opacity: 1; } }
+.cat-blink { opacity: 0; animation: cat-blink 8s steps(1,end) infinite; }
+@keyframes cat-blink { 0%,78%,100% { opacity: 0; } 75% { opacity: 1; } }
+.laser-dot { opacity: 0; animation: laser-path 8s ease-in-out infinite, laser-visible 8s steps(1,end) infinite; }
+@keyframes laser-visible { 0%,64%,100% { opacity: 0; } 25% { opacity: 1; } }
+@keyframes laser-path {
+  0%,32% { transform: translate(46px,230px); }
+  38%,45% { transform: translate(439px,205px); }
+  51%,64% { transform: translate(414px,430px); }
+  100% { transform: translate(46px,230px); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .cat-open, .cat-closed { animation: none; }
+  .cat-base,.cat-left,.cat-right,.cat-down,.cat-blink,.laser-dot { animation: none; }
+  .cat-base { opacity: 1; }
+  .cat-left,.cat-right,.cat-down,.cat-blink,.laser-dot { opacity: 0; }
 }
 </style>
 <text x="26" y="38.0" fill="#c9d1d9"></text>
@@ -21,12 +37,21 @@
 <text x="26" y="213.0" fill="#c9d1d9">     BHiXMS#SGGGMMhHhXhG22A25XA2XAAXAAsrXS</text>
 <text x="26" y="230.5" fill="#c9d1d9">    &amp;&amp;GX2G#####9#SMMG23M33hGSM55r2552AAAA#</text>
 <text x="26" y="248.0" fill="#c9d1d9">    @&amp;B9999#GMMMHh2XXA3M23GB@GssXM33h52rX#</text>
-<text class="cat-open" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr,,,,,;9#H#&amp;#h22i;;;X2552#</text>
-<text class="cat-closed" opacity="0" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr2AAXXr9#H#&amp;#h22XAXrX2552#</text>
-<text class="cat-open" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX;::i;A#@@@9GH;,,,,,iiX5G@</text>
-<text class="cat-closed" opacity="0" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX-----A#@@@9GH-------iX5G@</text>
-<text class="cat-open" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsr;;A2sis29</text>
-<text class="cat-closed" opacity="0" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsX2AA2sis29</text>
+<text class="cat-base" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr,,,,,;9#H#&amp;#h22i;;;X2552#</text>
+<text class="cat-left" opacity="0" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr;:s;;;9#H#&amp;#h22s;;;X2552#</text>
+<text class="cat-right" opacity="0" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr;;;s:;9#H#&amp;#h22;;;sX2552#</text>
+<text class="cat-down" opacity="0" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr;;;;;;9#H#&amp;#h22;;;;X2552#</text>
+<text class="cat-blink" opacity="0" x="26" y="265.5" fill="#c9d1d9">    @&amp;B#GHhAXA5Hr2AAXXr9#H#&amp;#h22XAXrX2552#</text>
+<text class="cat-base" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX;::i;A#@@@9GH;,,,,,iiX5G@</text>
+<text class="cat-left" opacity="0" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHXX:,,;A#@@@9GH;X,,,,;iX5G@</text>
+<text class="cat-right" opacity="0" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX;,,X;A#@@@9GH;,,,,X;iX5G@</text>
+<text class="cat-down" opacity="0" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX;,,,;A#@@@9GH;,,,,,;iX5G@</text>
+<text class="cat-blink" opacity="0" x="26" y="283.0" fill="#c9d1d9">    &amp;#Hhh5XX533HHX-----A#@@@9GH-------iX5G@</text>
+<text class="cat-base" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsr;;A2sis29</text>
+<text class="cat-left" opacity="0" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAAs3hH#GHB@B#GMhAXr;;A2sis29</text>
+<text class="cat-right" opacity="0" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hX#GHB@B#GMhAsr;XA2sis29</text>
+<text class="cat-down" opacity="0" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA5XhH#GHB@B#GMhAsrX;A2sis29</text>
+<text class="cat-blink" opacity="0" x="26" y="300.5" fill="#c9d1d9">   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsX2AA2sis29</text>
 <text x="26" y="318.0" fill="#c9d1d9">   &amp;Sh2sX5MHHh2AXX2h#&amp;@@&amp;3XXri;2h2Xsi;irisG</text>
 <text x="26" y="335.5" fill="#c9d1d9">   @#hAX2hh35AAAA5M9@@@&amp;&amp;Mr,,,,Ah2i;;iirrrM</text>
 <text x="26" y="353.0" fill="#c9d1d9">   @&amp;Gh3h3Ar;:;s5hG&amp;&amp;9##GM2,,:sXAAX;:;isXXG</text>
@@ -47,6 +72,7 @@
 <text x="26" y="615.5" fill="#c9d1d9">  9##9#GGGGS#999#SGSSHMh5535555XsriiirsA#@</text>
 <text x="26" y="633.0" fill="#c9d1d9">      hh533hhMMhMHS##GSH2AAAAAXXsrirssrrs</text>
 <text x="26" y="650.5" fill="#c9d1d9">              sXA5hhhhh32Aiirii;;::</text>
+<g class="laser-dot" opacity="0"><circle cx="0" cy="0" r="9" fill="#f85149" opacity="0.15"/><circle cx="0" cy="0" r="4" fill="#f85149"/><circle cx="0" cy="0" r="1.5" fill="#ffe3e3"/></g>
 <text x="470" y="45" fill="#c9d1d9">tyler@le</text>
 <path d="M 570 40 H 1050" stroke="#616e7f"/>
 <text x="470" y="80" fill="#616e7f">. </text>
@@ -94,7 +120,7 @@
 <text x="470" y="470" fill="#616e7f">. </text>
 <text x="488" y="470" fill="#ffa657">Website:</text>
 <text x="569" y="470" fill="#616e7f">...........</text>
-<text x="675" y="470" fill="#a5d6ff">github.com/tyler-le</text>
+<text x="675" y="470" fill="#a5d6ff">www.tylerle.dev</text>
 <text x="470" y="530" fill="#c9d1d9">- GitHub Stats</text>
 <path d="M 611 525 H 1050" stroke="#616e7f"/>
 <text x="470" y="560" fill="#616e7f">. </text>
