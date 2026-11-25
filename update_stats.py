@@ -13,35 +13,44 @@ def get(url, auth=False, token=None):
     with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
         return r.read()
 profile = json.loads(get("https://api.github.com/users/" + USER, True))
-# Fixed ASCII portrait from the supplied photograph; background masked out.
+# Approved cat avatar ASCII artwork; background excluded.
 portrait = [
     "",
-    "               ,,,--=+,:-==-,:",
-    "           =+*****##%%**#*####*-:",
-    "         *#####*####%##*###*###%#+,",
-    "       *#%#####%%%#**+***#######%%%+",
-    "      *%%%%%%%%%#+=-,,=+***##%####%%*",
-    "     #%%@@@@@@%*=-,,:,-=++***#%%#%%%%+",
-    "    #%@@@@@@@#+-,,::::,,===+**#%%%%%@%+",
-    "   *@@@@@@@%+-,,:::..::,,=--+*+*%@@%%%%+",
-    "   #@%@@%#*-:,:,,----,,,,,,,==--+*#%%%%*",
-    "   *%%@%-,:,,,,:::,-===-,,--===-,,,=#@%*",
-    "   *@%@*,::,--==++=--==,:,-==-,,:::.-@%*",
-    "   +%@%=:,::,-++*#*++--,.:-=*##*+=,::##+",
-    "   ==*#-,:::...:,--,,,,:..,,-===-,::.+*",
-    "   +--+-,,::.......::::....:::::.....=+",
-    "   =,=--,,,::::::,--:.::::..:-,:::...=+",
-    "    :,,---------=+===+*+====-=++-,,::=+",
-    "     .,----====++-,-=+***+==-,=*+=--:=",
-    "      ,-----=-==+***+++++===++=++=-,.",
-    "       -=--------**=-,,,,,,-##=---,,",
-    "        =+==-=---------,,,,--,----,",
-    "         +++====-----====--,,,----",
-    "          ***+==--,,,,,-,,,:,,--+",
-    "            ****+--,::::::::,-=",
-    "             *###**+==-------",
-    "                **###****+",
-    ""
+    "        &#MH",
+    "       &G5553",
+    "       G3hhh3h                        G3hB",
+    "      S3MGHMMMh                     S3AsiH",
+    "      3355hHMHhM                   Gh352Xh",
+    "     G3525hhMHMMS                 Ghh33353",
+    "     S52AA5MHHS99#SGGGGS#SS#### #Gh33335A2&",
+    "     #h2Xrirh###GGHMHGhMGHhMHHhMHHMHh32Xr2@",
+    "     GhAXA533SSGMhhhh323232252A2h33355s;ih",
+    "     BHiXMS#SGGGMMhHhXhG22A25XA2XAAXAAsrXS",
+    "    &&GX2G#####9#SMMG23M33hGSM55r2552AAAA#",
+    "    @&B9999#GMMMHh2XXA3M23GB@GssXM33h52rX#",
+    "    @&B#GHhAXA5Hr,,,,,;9#H#&#h22i;;;X2552#",
+    "    &#Hhh5XX533HHX;::i;A#@@@9GH;,,,,,iiX5G@",
+    "   @9Hh3AX5h32AAA53hH#GHB@B#GMhAsr;;A2sis29",
+    "   &Sh2sX5MHHh2AXX2h#&@@&3XXri;2h2Xsi;irisG",
+    "   @#hAX2hh35AAAA5M9@@@&&Mr,,,,Ah2i;;iirrrM",
+    "   @&Gh3h3Ar;:;s5hG&&9##GM2,,:sXAAX;:;isXXG",
+    "    @9M352Xrrrss2hMSSM52X:,,,,,;iXA;,,,i2S&",
+    "    @&9GM32XsrrsX22A2As;,,,,,,,:rs;,,,:sH&",
+    "     @9#SGM32AXsXAAXXAAAXsr;;;,:;::;iiAG&",
+    "      #SHGSGMh32AXssXsXAXsirri:,,,,rAG9",
+    "     9SGHMGSGMh52XXXssrii;;::,,:;rs3S",
+    "     BSS9999#GM32Xrrr;:,:;:::;;irX3#",
+    "    9#9B&&@&9#Hh52Xi;;;:::,::;;;rXH&@",
+    "   GSS#B&&&&B#SHh32Asrriiii;iiiiir5#@",
+    "   HHGS#9BBBBB#GMM325522AAXXXsrrrrs3B@",
+    "  HHGS#S#9B&B&&9SSGHhhh55552AAAXsssXM&@",
+    "  GHGS##SS#9###9SGGGGGGGHMMHMh2Xrirr29@@",
+    "  #SSS#999#9999#99##9#SGGSGGM32XsrrrXG@@",
+    "  h3MGSSS9#9BBBB99SGS###HMHM32XXXXsssAS&@",
+    "  GHHGGSSSSS99999GMMHSSSGHM32AXXXsrsssAG&",
+    "  9##9#GGGGS#999#SGSSHMh5535555XsriiirsA#@",
+    "      hh533hhMMhMHS##GSH2AAAAAXXsrirssrrs",
+    "              sXA5hhhhh32Aiirii;;::"
 ]
 # Only aggregate counts are published. Never print repository identifiers or tokens.
 # Optional credentials must be explicitly approved for each private repository.
@@ -238,11 +247,7 @@ diff_available = bool(known) and (added > 0 or deleted > 0)
 contributed = f"{len(contributed_names):,}" if contributed_names else None
 if contributed and (discovery_partial or restricted is None or restricted > 0):
     contributed += "+"
-# Prefer a separate portfolio URL from the public GitHub profile when present.
-website = (profile.get("blog") or "https://github.com/tyler-le").strip()
-if not website.startswith(("https://", "http://")):
-    website = "https://" + website
-website_display = website.removeprefix("https://").removeprefix("http://").rstrip("/")
+website_display = "github.com/tyler-le"
 joined = date.today() >= date(2026,12,14)
 rows = [
 ("Current", "Google"),
@@ -262,36 +267,34 @@ rows = [
 ("",""),
 ("- GitHub Stats",""),
 ("Contributions",total),
-] + ([("Repos contributed" if private_names else "Public repos",contributed)] if contributed else []) + ([("Code changes" if private_diff else "Public code diff","__diff__")] if diff_available else []) + [
+] + ([("Repos contributed",contributed)] if contributed else []) + ([("Code diff","__diff__")] if diff_available else []) + [
 ]
 for theme, bg, fg, key, val, dim in [
     ("dark","#161b22","#c9d1d9","#ffa657","#a5d6ff","#616e7f"),
     ("light","#f6f8fa","#24292f","#953800","#0550ae","#6e7781")]:
-    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="990" height="620" viewBox="0 0 990 620"><rect width="990" height="620" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="680" viewBox="0 0 1080 680"><rect width="1080" height="680" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
     def line(x,y,s,c):
         out.append(f'<text x="{x}" y="{y}" fill="{c}">{escape(s)}</text>')
     for i,s in enumerate(portrait):
-        line(15, 62+i*19, s, fg)
-    line(415,31,"tyler@le",fg)
-    out.append(f'<path d="M 500 26 H 965" stroke="{dim}"/>')
+        line(26, 38+i*17.5, s, fg)
+    line(470,45,"tyler@le",fg)
+    out.append(f'<path d="M 570 40 H 1050" stroke="{dim}"/>')
     for i,(k,v) in enumerate(rows):
-        y=60+i*24
+        y=80+i*30
         if k.startswith("-"):
-            line(415,y,k,fg)
-            out.append(f'<path d="M {425+len(k)*9} {y-5} H 965" stroke="{dim}"/>')
+            line(470,y,k,fg)
+            out.append(f'<path d="M {485+len(k)*9} {y-5} H 1050" stroke="{dim}"/>')
         elif k:
-            line(415,y,". ",dim)
-            line(433,y,k+":",key)
-            line(433+(len(k)+2)*9,y,"."*(18-len(k)),dim)
+            line(470,y,". ",dim)
+            line(488,y,k+":",key)
+            line(488+(len(k)+2)*9,y,"."*(18-len(k)),dim)
             if v == "__diff__":
                 green, red = ("#3fb950", "#f85149") if theme == "dark" else ("#1a7f37", "#cf222e")
                 plus, minus = f"+{added:,}", f"-{deleted:,}"
-                line(620,y,plus,green)
-                line(620+9*(len(plus)+2),y,minus,red)
-                if partial_diff:
-                    line(620+9*(len(plus)+len(minus)+4),y,"(partial)",dim)
+                line(675,y,plus,green)
+                line(675+9*(len(plus)+2),y,minus,red)
             else:
-                line(620,y,v,val)
+                line(675,y,v,val)
     out.append("</g></svg>")
     Path(theme+"_mode.svg").write_text("\n".join(out)+"\n")
 
