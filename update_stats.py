@@ -2,7 +2,6 @@ import json, os, urllib.request, io
 from pathlib import Path
 from datetime import date
 from html import escape
-from PIL import Image, ImageOps
 
 USER = "tyler-le"
 TOKEN = os.environ.get("GH_TOKEN", "")
@@ -13,13 +12,36 @@ def get(url, auth=False):
     with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
         return r.read()
 profile = json.loads(get("https://api.github.com/users/" + USER, True))
-avatar_raw = Image.open(io.BytesIO(get(profile["avatar_url"]))).convert("L")
-# Cat-focused crop; normalized coordinates can be refined after visual review.
-w, h = avatar_raw.size
-cat_box = (int(w * 0.20), int(h * 0.05), int(w * 0.90), int(h * 0.88))
-avatar = ImageOps.autocontrast(ImageOps.pad(avatar_raw.crop(cat_box), (42, 27), color=0), cutoff=1)
-ramp = " .:-=+*#%@"
-portrait = ["".join(ramp[p * (len(ramp)-1)//255] for p in list(avatar.crop((0,y,42,y+1)).getdata())) for y in range(27)]
+# Fixed ASCII portrait from the supplied photograph; background masked out.
+portrait = [
+    "",
+    "               ,,,--=+,:-==-,:",
+    "           =+*****##%%**#*####*-:",
+    "         *#####*####%##*###*###%#+,",
+    "       *#%#####%%%#**+***#######%%%+",
+    "      *%%%%%%%%%#+=-,,=+***##%####%%*",
+    "     #%%@@@@@@%*=-,,:,-=++***#%%#%%%%+",
+    "    #%@@@@@@@#+-,,::::,,===+**#%%%%%@%+",
+    "   *@@@@@@@%+-,,:::..::,,=--+*+*%@@%%%%+",
+    "   #@%@@%#*-:,:,,----,,,,,,,==--+*#%%%%*",
+    "   *%%@%-,:,,,,:::,-===-,,--===-,,,=#@%*",
+    "   *@%@*,::,--==++=--==,:,-==-,,:::.-@%*",
+    "   +%@%=:,::,-++*#*++--,.:-=*##*+=,::##+",
+    "   ==*#-,:::...:,--,,,,:..,,-===-,::.+*",
+    "   +--+-,,::.......::::....:::::.....=+",
+    "   =,=--,,,::::::,--:.::::..:-,:::...=+",
+    "    :,,---------=+===+*+====-=++-,,::=+",
+    "     .,----====++-,-=+***+==-,=*+=--:=",
+    "      ,-----=-==+***+++++===++=++=-,.",
+    "       -=--------**=-,,,,,,-##=---,,",
+    "        =+==-=---------,,,,--,----,",
+    "         +++====-----====--,,,----",
+    "          ***+==--,,,,,-,,,:,,--+",
+    "            ****+--,::::::::,-=",
+    "             *###**+==-------",
+    "                **###****+",
+    ""
+]
 repos = []
 for page in range(1, 101):
     batch = json.loads(get(f"https://api.github.com/users/{USER}/repos?per_page=100&page={page}", True))
@@ -123,7 +145,7 @@ for theme, bg, fg, key, val, dim in [
     def line(x,y,s,c):
         out.append(f'<text x="{x}" y="{y}" fill="{c}">{escape(s)}</text>')
     for i,s in enumerate(portrait):
-        line(15, 31+i*19, s, fg)
+        line(15, 62+i*19, s, fg)
     line(415,31,"tyler@le",fg)
     out.append(f'<path d="M 500 26 H 965" stroke="{dim}"/>')
     for i,(k,v) in enumerate(rows):
