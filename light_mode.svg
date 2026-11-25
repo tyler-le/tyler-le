@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="990" height="570" viewBox="0 0 990 570"><rect width="990" height="570" rx="15" fill="#f6f8fa"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">
+<text x="15" y="31" fill="#24292f">+=======------------------================</text>
+<text x="15" y="50" fill="#24292f">++========-------=========================</text>
+<text x="15" y="69" fill="#24292f">+++=======================================</text>
+<text x="15" y="88" fill="#24292f">+++=====================================++</text>
+<text x="15" y="107" fill="#24292f">++++==================================++++</text>
+<text x="15" y="126" fill="#24292f">++++++==========+++=+++============+++++++</text>
+<text x="15" y="145" fill="#24292f">++++++++++++++++++++++++++=====+++++++++++</text>
+<text x="15" y="164" fill="#24292f">*+++++++++++++++++++++++++++++++++++++++++</text>
+<text x="15" y="183" fill="#24292f">*++++++++++++++++++++++++++++++++++++++++*</text>
+<text x="15" y="202" fill="#24292f">***+++++++++++++++++++++++++++++++++++++**</text>
+<text x="15" y="221" fill="#24292f">*****++++++++********+++++++++++++++++****</text>
+<text x="15" y="240" fill="#24292f">*************************+****************</text>
+<text x="15" y="259" fill="#24292f">******************************************</text>
+<text x="15" y="278" fill="#24292f">#*****************************************</text>
+<text x="15" y="297" fill="#24292f">##***************-+***********************</text>
+<text x="15" y="316" fill="#24292f">###*********####+-=#****#*-************###</text>
+<text x="15" y="335" fill="#24292f">########***#####---*#####=:*#********#####</text>
+<text x="15" y="354" fill="#24292f">########**#####*::=++++*+-:+##############</text>
+<text x="15" y="373" fill="#24292f">%##############*:.==------.*##############</text>
+<text x="15" y="392" fill="#24292f">%%##############:=+=--::...*############%%</text>
+<text x="15" y="411" fill="#24292f">%%%#############++=-.:=-:::*#########%%%%%</text>
+<text x="15" y="430" fill="#24292f">%%%%%%##########+::. :*-  :*#######%%%%%%%</text>
+<text x="15" y="449" fill="#24292f">%%%%%%%%%%%%%%%*::::-++-  .+#####%%%%%%%%%</text>
+<text x="15" y="468" fill="#24292f">%%%%%%%%%%%%%%%*:-::*#. :  =%%#%%%%%%%%%%%</text>
+<text x="15" y="487" fill="#24292f">@%%%%%%%%%%%%%%#-. -+-  .  *%%%%%%%%%%%%%%</text>
+<text x="15" y="506" fill="#24292f">@@@%%%%%%%%%%%%%+:..:     :#%%%%%%%%%%%%@@</text>
+<text x="15" y="525" fill="#24292f">@@@@@@@%%%%%%%%#+=-...   .*%%%%%%%%%%@@@@@</text>
+<text x="415" y="31" fill="#24292f">tyler@le</text>
+<path d="M 500 26 H 965" stroke="#6e7781"/>
+<text x="415" y="60" fill="#6e7781">. </text>
+<text x="433" y="60" fill="#953800">Host:</text>
+<text x="487" y="60" fill="#6e7781">..............</text>
+<text x="620" y="60" fill="#0550ae">Coursera</text>
+<text x="415" y="84" fill="#6e7781">. </text>
+<text x="433" y="84" fill="#953800">Kernel:</text>
+<text x="505" y="84" fill="#6e7781">............</text>
+<text x="620" y="84" fill="#0550ae">Software Engineer</text>
+<text x="415" y="108" fill="#6e7781">. </text>
+<text x="433" y="108" fill="#953800">Next:</text>
+<text x="487" y="108" fill="#6e7781">..............</text>
+<text x="620" y="108" fill="#0550ae">Google (incoming)</text>
+<text x="415" y="132" fill="#6e7781">. </text>
+<text x="433" y="132" fill="#953800">Previous:</text>
+<text x="523" y="132" fill="#6e7781">..........</text>
+<text x="620" y="132" fill="#0550ae">Amazon Ads</text>
+<text x="415" y="156" fill="#6e7781">. </text>
+<text x="433" y="156" fill="#953800">Education:</text>
+<text x="532" y="156" fill="#6e7781">.........</text>
+<text x="620" y="156" fill="#0550ae">UC San Diego | B.S. Computer Science</text>
+<text x="415" y="204" fill="#6e7781">. </text>
+<text x="433" y="204" fill="#953800">Languages:</text>
+<text x="532" y="204" fill="#6e7781">.........</text>
+<text x="620" y="204" fill="#0550ae">Java, Python, C++, JavaScript, SQL</text>
+<text x="415" y="228" fill="#6e7781">. </text>
+<text x="433" y="228" fill="#953800">Backend:</text>
+<text x="514" y="228" fill="#6e7781">...........</text>
+<text x="620" y="228" fill="#0550ae">Distributed systems, APIs, GraphQL</text>
+<text x="415" y="252" fill="#6e7781">. </text>
+<text x="433" y="252" fill="#953800">Infrastructure:</text>
+<text x="577" y="252" fill="#6e7781">....</text>
+<text x="620" y="252" fill="#0550ae">AWS, Redis, DynamoDB, PostgreSQL</text>
+<text x="415" y="276" fill="#6e7781">. </text>
+<text x="433" y="276" fill="#953800">Frontend:</text>
+<text x="523" y="276" fill="#6e7781">..........</text>
+<text x="620" y="276" fill="#0550ae">React, Next.js</text>
+<text x="415" y="300" fill="#6e7781">. </text>
+<text x="433" y="300" fill="#953800">Interests:</text>
+<text x="532" y="300" fill="#6e7781">.........</text>
+<text x="620" y="300" fill="#0550ae">Low-latency systems, data pipelines</text>
+<text x="415" y="348" fill="#24292f">- Contact</text>
+<path d="M 506 343 H 965" stroke="#6e7781"/>
+<text x="415" y="372" fill="#6e7781">. </text>
+<text x="433" y="372" fill="#953800">LinkedIn:</text>
+<text x="523" y="372" fill="#6e7781">..........</text>
+<text x="620" y="372" fill="#0550ae">linkedin.com/in/le-tyler</text>
+<text x="415" y="396" fill="#6e7781">. </text>
+<text x="433" y="396" fill="#953800">GitHub:</text>
+<text x="505" y="396" fill="#6e7781">............</text>
+<text x="620" y="396" fill="#0550ae">github.com/tyler-le</text>
+<text x="415" y="444" fill="#24292f">- GitHub Stats</text>
+<path d="M 551 439 H 965" stroke="#6e7781"/>
+<text x="415" y="468" fill="#6e7781">. </text>
+<text x="433" y="468" fill="#953800">Repositories:</text>
+<text x="559" y="468" fill="#6e7781">......</text>
+<text x="620" y="468" fill="#0550ae">32</text>
+<text x="415" y="492" fill="#6e7781">. </text>
+<text x="433" y="492" fill="#953800">Stars:</text>
+<text x="496" y="492" fill="#6e7781">.............</text>
+<text x="620" y="492" fill="#0550ae">6</text>
+<text x="415" y="516" fill="#6e7781">. </text>
+<text x="433" y="516" fill="#953800">Followers:</text>
+<text x="532" y="516" fill="#6e7781">.........</text>
+<text x="620" y="516" fill="#0550ae">14</text>
+</g></svg>
