@@ -13,8 +13,11 @@ def get(url, auth=False):
     with urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=30) as r:
         return r.read()
 profile = json.loads(get("https://api.github.com/users/" + USER, True))
-avatar = Image.open(io.BytesIO(get(profile["avatar_url"]))).convert("L")
-avatar = ImageOps.autocontrast(ImageOps.fit(avatar, (42, 27)), cutoff=1)
+avatar_raw = Image.open(io.BytesIO(get(profile["avatar_url"]))).convert("L")
+# Cat-focused crop; normalized coordinates can be refined after visual review.
+w, h = avatar_raw.size
+cat_box = (int(w * 0.20), int(h * 0.05), int(w * 0.90), int(h * 0.88))
+avatar = ImageOps.autocontrast(ImageOps.pad(avatar_raw.crop(cat_box), (42, 27), color=0), cutoff=1)
 ramp = " .:-=+*#%@"
 portrait = ["".join(ramp[p * (len(ramp)-1)//255] for p in list(avatar.crop((0,y,42,y+1)).getdata())) for y in range(27)]
 repos = []
