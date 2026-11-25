@@ -43,15 +43,15 @@
 <text x="415" y="156" fill="#6e7781">. </text>
 <text x="433" y="156" fill="#953800">Languages:</text>
 <text x="532" y="156" fill="#6e7781">.........</text>
-<text x="620" y="156" fill="#0550ae">Java, Python, C++, JavaScript, SQL</text>
+<text x="620" y="156" fill="#0550ae">Kotlin, Java, Python</text>
 <text x="415" y="180" fill="#6e7781">. </text>
 <text x="433" y="180" fill="#953800">Backend:</text>
 <text x="514" y="180" fill="#6e7781">...........</text>
-<text x="620" y="180" fill="#0550ae">Distributed systems, APIs, GraphQL</text>
+<text x="620" y="180" fill="#0550ae">Spring Boot</text>
 <text x="415" y="204" fill="#6e7781">. </text>
 <text x="433" y="204" fill="#953800">Infrastructure:</text>
 <text x="577" y="204" fill="#6e7781">....</text>
-<text x="620" y="204" fill="#0550ae">AWS, Redis, DynamoDB, PostgreSQL</text>
+<text x="620" y="204" fill="#0550ae">AWS</text>
 <text x="415" y="228" fill="#6e7781">. </text>
 <text x="433" y="228" fill="#953800">Frontend:</text>
 <text x="523" y="228" fill="#6e7781">..........</text>
@@ -59,30 +59,34 @@
 <text x="415" y="252" fill="#6e7781">. </text>
 <text x="433" y="252" fill="#953800">Interests:</text>
 <text x="532" y="252" fill="#6e7781">.........</text>
-<text x="620" y="252" fill="#0550ae">Low-latency systems, data pipelines</text>
-<text x="415" y="300" fill="#24292f">- Contact</text>
-<path d="M 506 295 H 965" stroke="#6e7781"/>
-<text x="415" y="324" fill="#6e7781">. </text>
-<text x="433" y="324" fill="#953800">LinkedIn:</text>
-<text x="523" y="324" fill="#6e7781">..........</text>
-<text x="620" y="324" fill="#0550ae">linkedin.com/in/le-tyler</text>
+<text x="620" y="252" fill="#0550ae">Data pipelines</text>
+<text x="415" y="276" fill="#6e7781">. </text>
+<text x="433" y="276" fill="#953800">Personal:</text>
+<text x="523" y="276" fill="#6e7781">..........</text>
+<text x="620" y="276" fill="#0550ae">Smart home automation, aquariums</text>
+<text x="415" y="324" fill="#24292f">- Contact</text>
+<path d="M 506 319 H 965" stroke="#6e7781"/>
 <text x="415" y="348" fill="#6e7781">. </text>
-<text x="433" y="348" fill="#953800">Website:</text>
-<text x="514" y="348" fill="#6e7781">...........</text>
-<text x="620" y="348" fill="#0550ae">www.linkedin.com/in/le-tyler</text>
-<text x="415" y="396" fill="#24292f">- GitHub Stats</text>
-<path d="M 551 391 H 965" stroke="#6e7781"/>
-<text x="415" y="420" fill="#6e7781">. </text>
-<text x="433" y="420" fill="#953800">Contribs (1 yr):</text>
-<text x="586" y="420" fill="#6e7781">...</text>
-<text x="620" y="420" fill="#0550ae">3,145</text>
+<text x="433" y="348" fill="#953800">LinkedIn:</text>
+<text x="523" y="348" fill="#6e7781">..........</text>
+<text x="620" y="348" fill="#0550ae">linkedin.com/in/le-tyler</text>
+<text x="415" y="372" fill="#6e7781">. </text>
+<text x="433" y="372" fill="#953800">Website:</text>
+<text x="514" y="372" fill="#6e7781">...........</text>
+<text x="620" y="372" fill="#0550ae">www.linkedin.com/in/le-tyler</text>
+<text x="415" y="420" fill="#24292f">- GitHub Stats</text>
+<path d="M 551 415 H 965" stroke="#6e7781"/>
 <text x="415" y="444" fill="#6e7781">. </text>
-<text x="433" y="444" fill="#953800">Private (1 yr):</text>
-<text x="577" y="444" fill="#6e7781">....</text>
-<text x="620" y="444" fill="#0550ae">822</text>
+<text x="433" y="444" fill="#953800">Contribs (1 yr):</text>
+<text x="586" y="444" fill="#6e7781">...</text>
+<text x="620" y="444" fill="#0550ae">3,146</text>
 <text x="415" y="468" fill="#6e7781">. </text>
-<text x="433" y="468" fill="#953800">Public code diff:</text>
-<text x="595" y="468" fill="#6e7781">..</text>
-<text x="620" y="468" fill="#1a7f37">+8,431,576</text>
-<text x="728" y="468" fill="#cf222e">-3,114,638</text>
+<text x="433" y="468" fill="#953800">Private (1 yr):</text>
+<text x="577" y="468" fill="#6e7781">....</text>
+<text x="620" y="468" fill="#0550ae">822</text>
+<text x="415" y="492" fill="#6e7781">. </text>
+<text x="433" y="492" fill="#953800">Public code diff:</text>
+<text x="595" y="492" fill="#6e7781">..</text>
+<text x="620" y="492" fill="#1a7f37">+8,431,576</text>
+<text x="728" y="492" fill="#cf222e">-3,114,638</text>
 </g></svg>
