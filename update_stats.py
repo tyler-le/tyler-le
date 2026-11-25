@@ -23,6 +23,29 @@ for page in range(1, 101):
     repos.extend(batch)
     if len(batch) < 100: break
 stars = sum(r["stargazers_count"] for r in repos)
+# GitHub exposes anonymized private contributions when profile sharing is enabled.
+# Do not request repository access or publish private repository names.
+total = private = "Unavailable"
+try:
+    query = """query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          restrictedContributionsCount
+          contributionCalendar { totalContributions }
+        }
+      }
+    }"""
+    req = urllib.request.Request(
+        "https://api.github.com/graphql",
+        data=json.dumps({"query": query, "variables": {"login": USER}}).encode(),
+        headers={"Authorization": "Bearer " + TOKEN, "Content-Type": "application/json", "User-Agent": "profile-readme-generator"})
+    with urllib.request.urlopen(req, timeout=30) as response:
+        result = json.load(response)
+    c = result["data"]["user"]["contributionsCollection"]
+    total = f'{c["contributionCalendar"]["totalContributions"]:,}'
+    private = f'{c["restrictedContributionsCount"]:,}'
+except (OSError, KeyError, TypeError, ValueError) as exc:
+    print("Contribution totals unavailable:", type(exc).__name__)
 joined = date.today() >= date(2026,12,14)
 rows = [
 ("Host", "Google" if joined else "Coursera"),
@@ -42,14 +65,16 @@ rows = [
 ("GitHub","github.com/tyler-le"),
 ("",""),
 ("- GitHub Stats",""),
-("Repositories",str(profile["public_repos"])),
+("Public repos",str(profile["public_repos"])),
 ("Stars",str(stars)),
 ("Followers",str(profile["followers"])),
+("Contribs (1 yr)",total),
+("Private (1 yr)",private),
 ]
 for theme, bg, fg, key, val, dim in [
     ("dark","#161b22","#c9d1d9","#ffa657","#a5d6ff","#616e7f"),
     ("light","#f6f8fa","#24292f","#953800","#0550ae","#6e7781")]:
-    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="990" height="570" viewBox="0 0 990 570"><rect width="990" height="570" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="990" height="620" viewBox="0 0 990 620"><rect width="990" height="620" rx="15" fill="{bg}"/><g font-family="Consolas, Menlo, monospace" font-size="15" xml:space="preserve">']
     def line(x,y,s,c):
         out.append(f'<text x="{x}" y="{y}" fill="{c}">{escape(s)}</text>')
     for i,s in enumerate(portrait):
