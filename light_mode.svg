@@ -29,75 +29,60 @@
 <text x="415" y="31" fill="#24292f">tyler@le</text>
 <path d="M 500 26 H 965" stroke="#6e7781"/>
 <text x="415" y="60" fill="#6e7781">. </text>
-<text x="433" y="60" fill="#953800">Host:</text>
-<text x="487" y="60" fill="#6e7781">..............</text>
+<text x="433" y="60" fill="#953800">Current:</text>
+<text x="514" y="60" fill="#6e7781">...........</text>
 <text x="620" y="60" fill="#0550ae">Coursera</text>
 <text x="415" y="84" fill="#6e7781">. </text>
-<text x="433" y="84" fill="#953800">Kernel:</text>
-<text x="505" y="84" fill="#6e7781">............</text>
+<text x="433" y="84" fill="#953800">Occupation:</text>
+<text x="541" y="84" fill="#6e7781">........</text>
 <text x="620" y="84" fill="#0550ae">Software Engineer</text>
 <text x="415" y="108" fill="#6e7781">. </text>
-<text x="433" y="108" fill="#953800">Next:</text>
-<text x="487" y="108" fill="#6e7781">..............</text>
-<text x="620" y="108" fill="#0550ae">Google (incoming)</text>
-<text x="415" y="132" fill="#6e7781">. </text>
-<text x="433" y="132" fill="#953800">Previous:</text>
-<text x="523" y="132" fill="#6e7781">..........</text>
-<text x="620" y="132" fill="#0550ae">Amazon Ads</text>
+<text x="433" y="108" fill="#953800">Education:</text>
+<text x="532" y="108" fill="#6e7781">.........</text>
+<text x="620" y="108" fill="#0550ae">UC San Diego | B.S. Computer Science</text>
 <text x="415" y="156" fill="#6e7781">. </text>
-<text x="433" y="156" fill="#953800">Education:</text>
+<text x="433" y="156" fill="#953800">Languages:</text>
 <text x="532" y="156" fill="#6e7781">.........</text>
-<text x="620" y="156" fill="#0550ae">UC San Diego | B.S. Computer Science</text>
+<text x="620" y="156" fill="#0550ae">Java, Python, C++, JavaScript, SQL</text>
+<text x="415" y="180" fill="#6e7781">. </text>
+<text x="433" y="180" fill="#953800">Backend:</text>
+<text x="514" y="180" fill="#6e7781">...........</text>
+<text x="620" y="180" fill="#0550ae">Distributed systems, APIs, GraphQL</text>
 <text x="415" y="204" fill="#6e7781">. </text>
-<text x="433" y="204" fill="#953800">Languages:</text>
-<text x="532" y="204" fill="#6e7781">.........</text>
-<text x="620" y="204" fill="#0550ae">Java, Python, C++, JavaScript, SQL</text>
+<text x="433" y="204" fill="#953800">Infrastructure:</text>
+<text x="577" y="204" fill="#6e7781">....</text>
+<text x="620" y="204" fill="#0550ae">AWS, Redis, DynamoDB, PostgreSQL</text>
 <text x="415" y="228" fill="#6e7781">. </text>
-<text x="433" y="228" fill="#953800">Backend:</text>
-<text x="514" y="228" fill="#6e7781">...........</text>
-<text x="620" y="228" fill="#0550ae">Distributed systems, APIs, GraphQL</text>
+<text x="433" y="228" fill="#953800">Frontend:</text>
+<text x="523" y="228" fill="#6e7781">..........</text>
+<text x="620" y="228" fill="#0550ae">React, Next.js</text>
 <text x="415" y="252" fill="#6e7781">. </text>
-<text x="433" y="252" fill="#953800">Infrastructure:</text>
-<text x="577" y="252" fill="#6e7781">....</text>
-<text x="620" y="252" fill="#0550ae">AWS, Redis, DynamoDB, PostgreSQL</text>
-<text x="415" y="276" fill="#6e7781">. </text>
-<text x="433" y="276" fill="#953800">Frontend:</text>
-<text x="523" y="276" fill="#6e7781">..........</text>
-<text x="620" y="276" fill="#0550ae">React, Next.js</text>
-<text x="415" y="300" fill="#6e7781">. </text>
-<text x="433" y="300" fill="#953800">Interests:</text>
-<text x="532" y="300" fill="#6e7781">.........</text>
-<text x="620" y="300" fill="#0550ae">Low-latency systems, data pipelines</text>
-<text x="415" y="348" fill="#24292f">- Contact</text>
-<path d="M 506 343 H 965" stroke="#6e7781"/>
-<text x="415" y="372" fill="#6e7781">. </text>
-<text x="433" y="372" fill="#953800">LinkedIn:</text>
-<text x="523" y="372" fill="#6e7781">..........</text>
-<text x="620" y="372" fill="#0550ae">linkedin.com/in/le-tyler</text>
-<text x="415" y="396" fill="#6e7781">. </text>
-<text x="433" y="396" fill="#953800">GitHub:</text>
-<text x="505" y="396" fill="#6e7781">............</text>
-<text x="620" y="396" fill="#0550ae">github.com/tyler-le</text>
-<text x="415" y="444" fill="#24292f">- GitHub Stats</text>
-<path d="M 551 439 H 965" stroke="#6e7781"/>
+<text x="433" y="252" fill="#953800">Interests:</text>
+<text x="532" y="252" fill="#6e7781">.........</text>
+<text x="620" y="252" fill="#0550ae">Low-latency systems, data pipelines</text>
+<text x="415" y="300" fill="#24292f">- Contact</text>
+<path d="M 506 295 H 965" stroke="#6e7781"/>
+<text x="415" y="324" fill="#6e7781">. </text>
+<text x="433" y="324" fill="#953800">LinkedIn:</text>
+<text x="523" y="324" fill="#6e7781">..........</text>
+<text x="620" y="324" fill="#0550ae">linkedin.com/in/le-tyler</text>
+<text x="415" y="348" fill="#6e7781">. </text>
+<text x="433" y="348" fill="#953800">Website:</text>
+<text x="514" y="348" fill="#6e7781">...........</text>
+<text x="620" y="348" fill="#0550ae">www.linkedin.com/in/le-tyler</text>
+<text x="415" y="396" fill="#24292f">- GitHub Stats</text>
+<path d="M 551 391 H 965" stroke="#6e7781"/>
+<text x="415" y="420" fill="#6e7781">. </text>
+<text x="433" y="420" fill="#953800">Contribs (1 yr):</text>
+<text x="586" y="420" fill="#6e7781">...</text>
+<text x="620" y="420" fill="#0550ae">3,145</text>
+<text x="415" y="444" fill="#6e7781">. </text>
+<text x="433" y="444" fill="#953800">Private (1 yr):</text>
+<text x="577" y="444" fill="#6e7781">....</text>
+<text x="620" y="444" fill="#0550ae">822</text>
 <text x="415" y="468" fill="#6e7781">. </text>
-<text x="433" y="468" fill="#953800">Public repos:</text>
-<text x="559" y="468" fill="#6e7781">......</text>
-<text x="620" y="468" fill="#0550ae">32</text>
-<text x="415" y="492" fill="#6e7781">. </text>
-<text x="433" y="492" fill="#953800">Stars:</text>
-<text x="496" y="492" fill="#6e7781">.............</text>
-<text x="620" y="492" fill="#0550ae">6</text>
-<text x="415" y="516" fill="#6e7781">. </text>
-<text x="433" y="516" fill="#953800">Followers:</text>
-<text x="532" y="516" fill="#6e7781">.........</text>
-<text x="620" y="516" fill="#0550ae">14</text>
-<text x="415" y="540" fill="#6e7781">. </text>
-<text x="433" y="540" fill="#953800">Contribs (1 yr):</text>
-<text x="586" y="540" fill="#6e7781">...</text>
-<text x="620" y="540" fill="#0550ae">3,138</text>
-<text x="415" y="564" fill="#6e7781">. </text>
-<text x="433" y="564" fill="#953800">Private (1 yr):</text>
-<text x="577" y="564" fill="#6e7781">....</text>
-<text x="620" y="564" fill="#0550ae">822</text>
+<text x="433" y="468" fill="#953800">Public code diff:</text>
+<text x="595" y="468" fill="#6e7781">..</text>
+<text x="620" y="468" fill="#1a7f37">+8,431,576</text>
+<text x="728" y="468" fill="#cf222e">-3,114,638</text>
 </g></svg>
